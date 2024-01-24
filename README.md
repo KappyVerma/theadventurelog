@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# The Travel Tea
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The Travel Tea is a web application that enables users to create, share, and rate their travel experiences. Users can manage their bucket lists, leave comments, upload images, and rate various places.
 
-In the project directory, you can run:
+### Problem
 
-### `npm start`
+Keeping track of our travel experiences has always been a challenge for my wife and me. We've been to many places and had both wonderful and challenging moments, but often forget to write those moments down or rate them.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Just like many others, we've faced the common issue of forgetting important details during our travels. As travelers who enjoy sharing our experiences but don't want the hassle of posting on social media, we see the need for a platform designed for laid-back explorers. We're looking for an app that can help organize our travel memories effortlessly and allows us to share these experiences without the overwhelming nature of mainstream social platforms.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Enter The Travel Tea — our solution to this dilemma. It's a dedicated space for travelers like us to easily curate, celebrate, and connect over our adventures. It's the perfect platform for those who love exploring but prefer simplicity, ensuring that the valuable lessons we've learned during our journeys contribute to a shared knowledge pool, benefiting fellow travelers without the usual fuss.
 
-### `npm test`
+### User Profile
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Primary Users**: Travel enthusiasts who want to document and share their travel experiences.
 
-### `npm run build`
+- **How They Use It**: Users can sign up, create and manage bucket lists, leave comments, upload images, and rate different types of places.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **User Authentication**: Allow users to sign up, log in, and manage their profiles.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Bucket List Management**: Create, edit, and delete destinations in the user's bucket list.Mark destinations as visited.
 
-### `npm run eject`
+- **Comments, Images, and Ratings**: Users can leave comments and upload images for each destination and rate various types of places.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Implementation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Tech Stack
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Frontend**: React
+- **Backend**: Express
+- **Database**: MySQL
+- **Authentication**: JWT
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### APIs
 
-## Learn More
+Not using any external API.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Sitemap
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Sign-in / Sign-up Page**
+- **Profile/Bucket List Page**
+- **Destination Page**
 
-### Code Splitting
+### Mockups
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![Sign-in Page](<Screenshot 2024-01-23 at 11.02.35 PM-1.png>)
 
-### Analyzing the Bundle Size
+![Profile Page](<Screenshot 2024-01-23 at 11.33.56 PM-1.png>)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![Destination Page](<Screenshot 2024-01-23 at 11.34.03 PM-1.png>)
 
-### Making a Progressive Web App
+### Data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Users Table**: user_id, username, password, email, timestamp.
 
-### Advanced Configuration
+- **Destination Table**: destination_id, user_id, name, notes, visited, timestamp.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Comments Table**: comment_id, user_id, destination_id, comment_text, created_at
 
-### Deployment
+### Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **User Authentication**:
 
-### `npm run build` fails to minify
+  - POST /signup
+  - POST /login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Bucket List Management**:
+
+  - POST /destinations
+  - GET /destinations
+  - GET /destinations/:id
+  - PUT /destinations/:id
+  - DELETE /destinations/:id
+
+- **Comments**:
+
+  - GET /destinations/:id/comments
+  - POST /destinations/:id/comments
+
+### Auth
+
+I will be using JWT for authentication.
+
+## Roadmap
+
+Timeline to finish this project is 7-10 days.
+
+## Nice-to-haves
+
+Adding Map pin for each destination and rated places.
+
+Making Destinations public or private.
+
+Search for Destinations and rated places.
