@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Travel Tea is a web application that enables users to create, share, and rate their travel experiences. Users can manage their bucket lists, leave comments, upload images, and rate various places.
+The Travel Tea is a web application that enables users to create, share, and rate their travel experiences. Users can manage their bucket lists, create notes, upload images, and rate various places.
 
 ### Problem
 
@@ -16,15 +16,15 @@ Enter The Travel Tea — our solution to this dilemma. It's a dedicated space fo
 
 - **Primary Users**: Travel enthusiasts who want to document and share their travel experiences.
 
-- **How They Use It**: Users can sign up, create and manage bucket lists, leave comments, upload images, and rate different types of places.
+- **How They Use It**: Users can sign up, create and manage bucket lists, create notes, upload images, and rate different types of places.
 
 ### Features
 
 - **User Authentication**: Allow users to sign up, log in, and manage their profiles.
 
-- **Bucket List Management**: Create, edit, and delete destinations in the user's bucket list.Mark destinations as visited.
+- **Bucket List Management**: Create, edit, and delete destinations in the user's bucket list. Mark destinations as visited.
 
-- **Comments, Images, and Ratings**: Users can leave comments and upload images for each destination and rate various types of places.
+- **Notes, Images, and Ratings**: Users can create notes and upload images for each destination and rate various types of places.
 
 ## Implementation
 
@@ -42,7 +42,8 @@ Not using any external API.
 ### Sitemap
 
 - **Sign-in / Sign-up Page**
-- **Profile/Bucket List Page**
+- **Profile Page**
+- **Bucket List Page**
 - **Destination Page**
 
 ### Mockups
@@ -61,7 +62,7 @@ Not using any external API.
 
 - **Destination Table**: destination_id, user_id, name, notes, visited, timestamp.
 
-- **Comments Table**: comment_id, user_id, destination_id, comment_text, created_at
+- **Bucket List Table**: id, user_id, destination_id, text, created_at
 
 ### Endpoints
 
@@ -70,7 +71,7 @@ Not using any external API.
   - POST /signup
   - POST /login
 
-- **Bucket List Management**:
+- **Destination Management**:
 
   - POST /destinations
   - GET /destinations
@@ -78,10 +79,12 @@ Not using any external API.
   - PUT /destinations/:id
   - DELETE /destinations/:id
 
-- **Comments**:
+- **Bucket List Management**:
 
-  - GET /destinations/:id/comments
-  - POST /destinations/:id/comments
+  - GET /bucketlist
+  - POST /bucketlist
+  - PUT /bucketlist/:id
+  - DELETE /bucketlist/:id
 
 ### Auth
 
