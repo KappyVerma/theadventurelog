@@ -52,6 +52,7 @@ Not using any external API.
 
 <img width="1440" alt="Screenshot 2024-01-23 at 11 33 56 PM-1" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/49b6a773-0630-46b9-9f00-ebac6c9efa1f">
 
+<img width="1440" alt="Screenshot 2024-01-25 at 10 57 42 AM" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/81b4b48c-3060-4a69-81c3-04f8516d2a5e">
 
 <img width="1440" alt="Screenshot 2024-01-23 at 11 34 03 PM-1" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/54e327fa-0e38-4b67-90a6-3a5e6aca3aa7">
 
