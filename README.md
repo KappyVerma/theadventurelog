@@ -47,11 +47,13 @@ Not using any external API.
 
 ### Mockups
 
-![Sign-in Page](<Screenshot 2024-01-23 at 11.02.35 PM-1.png>)
+<img width="1440" alt="Screenshot 2024-01-23 at 11 33 29 PM" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/2d52a424-11a2-4a4e-b61a-8561a003794a">
 
-![Profile Page](<Screenshot 2024-01-23 at 11.33.56 PM-1.png>)
+<img width="1440" alt="Screenshot 2024-01-23 at 11 33 56 PM-1" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/49b6a773-0630-46b9-9f00-ebac6c9efa1f">
 
-![Destination Page](<Screenshot 2024-01-23 at 11.34.03 PM-1.png>)
+
+<img width="1440" alt="Screenshot 2024-01-23 at 11 34 03 PM-1" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/54e327fa-0e38-4b67-90a6-3a5e6aca3aa7">
+
 
 ### Data
 
