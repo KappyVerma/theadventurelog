@@ -1,5 +1,14 @@
 import "./HomePage.scss";
+import Header from "../../components/Header/Header";
 
 export default function HomePage() {
-  return <h1>hello</h1>;
+  return (
+    <section className="homePage">
+      <Header
+        linkOne="Home Page"
+        linkTwo="Bucket List"
+        routeTwo="bucket-list"
+      />
+    </section>
+  );
 }
