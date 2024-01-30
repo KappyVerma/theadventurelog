@@ -8,6 +8,7 @@ import Destinations from "./pages/Destinations/Destinations";
 const url = process.env.REACT_APP_API_URL;
 
 function App() {
+  console.log(url);
   return (
     <BrowserRouter>
       <Routes>
