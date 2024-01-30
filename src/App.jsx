@@ -5,6 +5,8 @@ import Login from "./pages/Login/Login";
 import BucketList from "./pages/BucketList/BucketList";
 import Destinations from "./pages/Destinations/Destinations";
 
+const url = process.env.REACT_APP_API_URL;
+
 function App() {
   return (
     <BrowserRouter>
