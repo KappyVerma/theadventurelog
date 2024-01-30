@@ -1,9 +1,12 @@
 @import "./styles/partials/global";
 
 * {
-  background-color: $primary-color-silver;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Avenir", sans-serif;
+}
+
+body {
+  background-color: $primary-color-white;
 }
