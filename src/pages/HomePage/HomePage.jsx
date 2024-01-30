@@ -1,5 +1,5 @@
 import "./HomePage.scss";
 
 export default function HomePage() {
-  return;
+  return <h1>hello</h1>;
 }
