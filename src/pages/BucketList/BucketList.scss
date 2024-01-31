@@ -1,4 +1,10 @@
 @import "../../styles/partials/global";
+
+.bucket-List {
+  @include desktop {
+    display: flex;
+  }
+}
 .goal {
   width: 100%;
   padding: 1em;
