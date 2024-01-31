@@ -8,7 +8,7 @@ export default function Header() {
         <Link to="/" className="navBar__logo"></Link>
       </div>
       <nav className="navBar__list">
-        <Link to={"/homepage"} className="navBar__links">
+        <Link to="/signin" className="navBar__links">
           Sign in
         </Link>
         <Link className="navBar__links navBar__links--mod">Sign up</Link>
