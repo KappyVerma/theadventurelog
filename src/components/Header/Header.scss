@@ -1,0 +1,44 @@
+@import "../../styles/partials/global";
+
+.navBar {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  padding: 1em 3em;
+
+  &__logo-container {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+  }
+  &__logo {
+    width: 120px;
+    height: 25px;
+    background-image: url("../../assets/logo/TheTravelTea.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  &__list {
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__links {
+    color: $primary-color-white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.675rem;
+    font-weight: 500;
+    padding: 0.8em 1.5em;
+
+    &--mod {
+      padding: 0.8em 2em;
+      border: 1px solid transparent;
+      border-radius: 20px;
+      background-color: $primary-color-red;
+    }
+  }
+}

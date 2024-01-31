@@ -1,0 +1,80 @@
+@import "../../styles/partials/global";
+
+.card {
+  padding: 1em;
+  @include tablet {
+    padding: 1.5em;
+  }
+  @include desktop {
+    width: 70%;
+  }
+
+  &__block {
+    @include tablet {
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1em;
+
+    @include tablet {
+      font-size: 0.875rem;
+      line-height: 1.4rem;
+    }
+
+    @include desktop {
+      text-align: center;
+    }
+  }
+  &__container {
+    width: 200px;
+    height: 40vh;
+    margin: 1em auto;
+    padding-bottom: 1em;
+    border-radius: 7px;
+    background-color: $primary-color-blue;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+
+    @include tablet {
+      width: 300px;
+      height: 60vh;
+      margin: 2em auto;
+    }
+
+    @include desktop {
+      width: 200px;
+      height: 40vh;
+      margin: 1.5em auto 1em;
+    }
+  }
+
+  &__details {
+    text-transform: uppercase;
+    font-size: 0.813rem;
+    font-weight: 400;
+    line-height: 1.13rem;
+    text-align: center;
+    bottom: 1em;
+    right: 1em;
+    color: $primary-color-white;
+
+    @include tablet {
+      font-size: 0.875rem;
+      font-weight: 700;
+      line-height: 1.4rem;
+    }
+  }
+  &__destination {
+    margin-bottom: 0.3em;
+  }
+}
