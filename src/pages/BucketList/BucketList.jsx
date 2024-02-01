@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import CreateBucketList from "../../components/CreateBucketList/CreateBucketList";
 import HeaderHome from "../../components/HeaderHome/HeaderHome";
 
-export default function BucketList() {
+export default function BucketList({ userId }) {
   const [form, setForm] = useState({
     destination: "",
     person: "",
@@ -16,7 +16,9 @@ export default function BucketList() {
 
   const getBucketListData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/bucketlist");
+      const response = await axios.get(
+        `http://localhost:8080/user/${userId}/bucketlist`
+      );
       setBucketListData(response.data);
     } catch (err) {
       console.error(err.message);

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignIn.scss";
 
-const SignIn = () => {
+const SignIn = ({ updateUserId }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -35,6 +35,7 @@ const SignIn = () => {
       });
 
       if (response.status === 200) {
+        updateUserId(response.data.user.id);
         console.log(response.data);
         Navigate("/bucketlist");
       } else {
