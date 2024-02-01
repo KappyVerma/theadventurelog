@@ -56,7 +56,7 @@ export default function BucketList({ userId }) {
         accompany: form.person,
         duedate: form.date,
         image_url: form.image,
-        user_id: 1,
+        user_id: userId,
         status: false,
       };
 
