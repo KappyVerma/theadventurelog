@@ -11,7 +11,9 @@ export default function Header() {
         <Link to="/signin" className="navBar__links">
           Sign in
         </Link>
-        <Link className="navBar__links navBar__links--mod">Sign up</Link>
+        <Link to="signup" className="navBar__links navBar__links--mod">
+          Sign up
+        </Link>
       </nav>
     </header>
   );

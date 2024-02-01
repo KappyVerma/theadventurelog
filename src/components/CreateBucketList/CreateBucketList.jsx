@@ -8,8 +8,8 @@ export default function CreateBucketList({ bucketListData }) {
         {bucketListData.map((data) => (
           <li key={data.id} className="card__container">
             <div className="card__details">
-              <p className="card__destination">{`${data.destination} with ${data.withWho}`}</p>
-              <p className="card__due">{data.dueDate}</p>
+              <p className="card__destination">{`${data.destination} with ${data.accompany}`}</p>
+              <p className="card__due">{data.duedate}</p>
             </div>
           </li>
         ))}

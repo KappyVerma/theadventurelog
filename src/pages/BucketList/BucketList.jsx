@@ -1,16 +1,30 @@
 import "./BucketList.scss";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CreateBucketList from "../../components/CreateBucketList/CreateBucketList";
 import HeaderHome from "../../components/HeaderHome/HeaderHome";
 
-export default function BucketList({ bucketListData, getBucketListData }) {
+export default function BucketList() {
   const [form, setForm] = useState({
     destination: "",
     person: "",
     date: "",
     image: "",
   });
+
+  const [bucketListData, setBucketListData] = useState([]);
+
+  const getBucketListData = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/bucketlist");
+      setBucketListData(response.data);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+  useEffect(() => {
+    getBucketListData();
+  }, []);
 
   const handleInputChange = (event) => {
     event.target.style.border = "1px solid #034694";
@@ -37,9 +51,9 @@ export default function BucketList({ bucketListData, getBucketListData }) {
     try {
       const newData = {
         destination: form.destination,
-        withWho: form.person,
-        dueDate: form.date,
-        img_url: form.image,
+        accompany: form.person,
+        duedate: form.date,
+        image_url: form.image,
         user_id: 1,
         status: false,
       };
