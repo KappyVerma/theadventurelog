@@ -35,7 +35,13 @@ const SignIn = ({ updateUserId }) => {
       });
 
       if (response.status === 200) {
+        const userId = response.data.user;
+
+        localStorage.setItem("userId", userId.id);
+        localStorage.setItem("username", userId.username);
+
         updateUserId(response.data.user.id);
+
         console.log(response.data);
         Navigate("/bucketlist");
       } else {

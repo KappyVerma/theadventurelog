@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import Login from "./pages/Login/Login";
 import BucketList from "./pages/BucketList/BucketList";
-import Places from "./pages/Places/Places";
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
+import Venue from "./pages/Venue/Venue";
 import { useState } from "react";
 
 function App() {
@@ -22,8 +22,11 @@ function App() {
         <Route path="signin" element={<SignIn updateUserId={updateUserId} />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="homepage" element={<HomePage />} />
-        <Route path="bucketlist" element={<BucketList userId={userId} />} />
-        <Route path="places" element={<Places />} />
+        <Route
+          path="bucketlist"
+          element={<BucketList userId={userId} setUserId={setUserId} />}
+        />
+        <Route path="bucketlist/:id" element={<Venue />} />
       </Routes>
     </BrowserRouter>
   );
