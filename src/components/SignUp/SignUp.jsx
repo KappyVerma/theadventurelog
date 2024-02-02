@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./SignUp.scss";
 
@@ -41,38 +42,41 @@ export default function SignUp() {
   };
 
   return (
-    <>
-      <section className="sign-up">
-        <h1 className="sign-up__title">Sign up</h1>
+    <section className="main-container">
+      <div className="sign-up">
+        <h1 className="sign-up__title">Create An Account</h1>
+        <h4 className="sign-up__sub-title">
+          create an account to enjoy all the services for free
+        </h4>
 
         <form onSubmit={handleSignup} className="sign-up__form" id="signupForm">
-          <label className="sign-up__label">
-            Username
-            <input
-              autoComplete="off"
-              type="text"
-              className="sign-up__input"
-              name="name"
-              value={username}
-              onChange={handleUserChange}
-            />
-          </label>
-          <label className="sign-up__label">
-            Password
-            <input
-              autoComplete="off"
-              type="password"
-              className="sign-up__input"
-              name="password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </label>
+          <input
+            autoComplete="off"
+            type="text"
+            className="sign-up__input"
+            placeholder="Username"
+            name="name"
+            value={username}
+            onChange={handleUserChange}
+          />
+
+          <input
+            autoComplete="off"
+            type="password"
+            className="sign-up__input"
+            placeholder="Password"
+            name="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
         </form>
         <button className="sign-up__button" form="signupForm">
-          Sign up
+          Create Account
         </button>
-      </section>
-    </>
+        <p className="sign-up__text">
+          Already have an account <Link to="/login">Log in</Link>
+        </p>
+      </div>
+    </section>
   );
 }

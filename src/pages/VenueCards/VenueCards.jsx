@@ -4,16 +4,14 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import HeaderForHome from "../HeaderForHome/HeaderForHome";
 
-export default function Venue() {
+export default function Venue({ url }) {
   const [venue, setVenue] = useState([]);
 
   const params = useParams();
 
   useEffect(() => {
     const getVenueData = async () => {
-      const response = await axios.get(
-        `http://localhost:8080/bucketlist/${params.id}/venue`
-      );
+      const response = await axios.get(`${url}/bucketlist/${params.id}/venue`);
       setVenue(response.data);
     };
     if (params) {

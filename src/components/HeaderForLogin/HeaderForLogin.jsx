@@ -6,7 +6,7 @@ export default function HeaderForLogin() {
     <header className="login-page-navBar">
       <Link to="/" className="login-page-navBar__logo"></Link>
       <nav className="login-page-navBar__list">
-        <Link to="/signin" className="login-page-navBar__links">
+        <Link to="/login" className="login-page-navBar__links">
           Log in
         </Link>
         <Link

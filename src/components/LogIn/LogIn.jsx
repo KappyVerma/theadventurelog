@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./LogIn.scss";
 
 export default function LogIn({ updateUserId }) {
@@ -57,9 +58,10 @@ export default function LogIn({ updateUserId }) {
   };
 
   return (
-    <>
-      <section className="sign-In">
-        <h1 className="sign-In__title">Sign in</h1>
+    <section className="main-container">
+      <div className="sign-In">
+        <Link to={"/"} className="sign-In__icon"></Link>
+        <h1 className="sign-In__title">Member Login</h1>
 
         <form onSubmit={handleLogIn} className="sign-in__form" id="login">
           <label className="sign-In__label">
@@ -68,6 +70,7 @@ export default function LogIn({ updateUserId }) {
               autoComplete="off"
               type="text"
               className="sign-In__input"
+              placeholder="Enter your username"
               name="name"
               value={username}
               onChange={handleUserChange}
@@ -79,6 +82,7 @@ export default function LogIn({ updateUserId }) {
               autoComplete="off"
               type="password"
               className="sign-In__input"
+              placeholder="Enter your password"
               name="password"
               value={password}
               onChange={handlePasswordChange}
@@ -88,7 +92,7 @@ export default function LogIn({ updateUserId }) {
         <button className="sign-In__button" form="login" type="submit">
           Sign in
         </button>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

@@ -2,14 +2,14 @@ import "./NewVenueCard.scss";
 import axios from "axios";
 import HeaderForHome from "../HeaderForHome/HeaderForHome";
 
-export default function NewVenueCard() {
+export default function NewVenueCard({ url }) {
   const createVenueCard = async (event) => {
     event.preventDefault();
 
     const userId = localStorage.getItem("userId");
     const bucketId = localStorage.getItem("bucketId");
 
-    const response = await axios.post("http://localhost:8080/venue", {
+    const response = await axios.post(`${url}/venue`, {
       visitedplaces: event.target.venue.value,
       content: event.target.content.value,
       image_url: event.target.image.value,

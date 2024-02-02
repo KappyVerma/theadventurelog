@@ -12,6 +12,8 @@ import { useState } from "react";
 function App() {
   const [userId, setUserId] = useState();
 
+  const url = process.env.REACT_APP_API_URL;
+
   const updateUserId = (userId) => {
     setUserId(userId);
   };
@@ -20,15 +22,15 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="signin" element={<LogIn updateUserId={updateUserId} />} />
+        <Route path="login" element={<LogIn updateUserId={updateUserId} />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="home" element={<Home />} />
         <Route
           path="bucketlist"
-          element={<BucketList userId={userId} setUserId={setUserId} />}
+          element={<BucketList userId={userId} url={url} />}
         />
-        <Route path="venue" element={<NewVenueCard />} />
-        <Route path="bucketlist/:id" element={<VenueCards />} />
+        <Route path="venue" element={<NewVenueCard url={url} />} />
+        <Route path="bucketlist/:id" element={<VenueCards url={url} />} />
       </Routes>
     </BrowserRouter>
   );
