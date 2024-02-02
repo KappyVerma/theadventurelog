@@ -1,11 +1,12 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage/HomePage";
-import Login from "./pages/Login/Login";
+import Home from "./pages/Home/Home";
+import Landing from "./pages/Landing/Landing";
 import BucketList from "./pages/BucketList/BucketList";
-import SignIn from "./components/SignIn/SignIn";
+import LogIn from "./components/LogIn/LogIn";
 import SignUp from "./components/SignUp/SignUp";
-import Venue from "./pages/Venue/Venue";
+import NewVenueCard from "./components/NewVenueCard/NewVenueCard";
+import VenueCards from "./components/VenueCards/VenueCards";
 import { useState } from "react";
 
 function App() {
@@ -18,15 +19,16 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="signin" element={<SignIn updateUserId={updateUserId} />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="signin" element={<LogIn updateUserId={updateUserId} />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="homepage" element={<HomePage />} />
+        <Route path="home" element={<Home />} />
         <Route
           path="bucketlist"
           element={<BucketList userId={userId} setUserId={setUserId} />}
         />
-        <Route path="bucketlist/:id" element={<Venue />} />
+        <Route path="venue" element={<NewVenueCard />} />
+        <Route path="bucketlist/:id" element={<VenueCards />} />
       </Routes>
     </BrowserRouter>
   );

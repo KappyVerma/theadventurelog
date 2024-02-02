@@ -1,9 +1,9 @@
-import "./Login.scss";
-import Header from "../../components/Header/Header";
+import "./Landing.scss";
+import HeaderForLogin from "../../components/HeaderForLogin/HeaderForLogin";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function LoginPage() {
   const Navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("userId") !== null) {
@@ -13,7 +13,7 @@ export default function Login() {
 
   return (
     <section className="login-page">
-      <Header />
+      <HeaderForLogin />
       <div className="login-page__background"></div>
       <p className="login-page__text">
         Share you travel stories from far and wide

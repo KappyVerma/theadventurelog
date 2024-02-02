@@ -1,0 +1,83 @@
+@import "../../styles/partials/global";
+
+.newVenue {
+  width: 100%;
+  padding: 1em;
+  padding-top: 150px;
+
+  @include tablet {
+    padding: 100px;
+  }
+
+  @include desktop {
+    width: 50%;
+    margin: auto;
+  }
+
+  &__title {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5em;
+    text-transform: uppercase;
+  }
+
+  &__label {
+    font-size: 0.675rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    @include tablet {
+      font-size: 0.75rem;
+      line-height: 1.25rem;
+    }
+  }
+  &__input {
+    width: 100%;
+    padding: 0.675em;
+    margin-bottom: 0.675em;
+    border: none;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    resize: none;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $primary-color-blue;
+    }
+  }
+  &__button {
+    width: 100%;
+    min-width: 150px;
+    height: 40px;
+    padding: 0 2em;
+    margin-top: 2em;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.675rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.2s linear;
+
+    &:hover {
+      background-color: $primary-color-blue;
+      color: $primary-color-white;
+    }
+
+    @include tablet {
+      width: auto;
+      margin-left: auto;
+      font-size: 0.75rem;
+      line-height: 1.25rem;
+    }
+
+    @include desktop {
+      width: 100%;
+    }
+  }
+}

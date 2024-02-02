@@ -1,27 +1,29 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./SignIn.scss";
+import "./LogIn.scss";
 
-const SignIn = ({ updateUserId }) => {
+export default function LogIn({ updateUserId }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const Navigate = useNavigate();
 
+  // function for username input fields
   const handleUserChange = (event) => {
     event.target.style.border = "";
     setUsername(event.target.value);
   };
-
+  // function for password input fields
   const handlePasswordChange = (event) => {
     event.target.style.border = "";
     setPassword(event.target.value);
   };
 
-  const handleSignIn = async (event) => {
+  // function for user login
+  const handleLogIn = async (event) => {
     event.preventDefault();
-
+    //form validation
     if (!username || !password) {
       event.target.name.style.border = "1px solid #d22d2d";
       event.target.password.style.border = "1px solid #d22d2d";
@@ -29,7 +31,7 @@ const SignIn = ({ updateUserId }) => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/signin", {
+      const response = await axios.post("http://localhost:8080/login", {
         username,
         password,
       });
@@ -37,9 +39,11 @@ const SignIn = ({ updateUserId }) => {
       if (response.status === 200) {
         const userId = response.data.user;
 
+        //storing user data into local storage
         localStorage.setItem("userId", userId.id);
         localStorage.setItem("username", userId.username);
 
+        //callback function from app.js
         updateUserId(response.data.user.id);
 
         console.log(response.data);
@@ -57,7 +61,7 @@ const SignIn = ({ updateUserId }) => {
       <section className="sign-In">
         <h1 className="sign-In__title">Sign in</h1>
 
-        <form onSubmit={handleSignIn} className="sign-in__form" id="signInForm">
+        <form onSubmit={handleLogIn} className="sign-in__form" id="login">
           <label className="sign-In__label">
             Username
             <input
@@ -81,12 +85,10 @@ const SignIn = ({ updateUserId }) => {
             />
           </label>
         </form>
-        <button className="sign-In__button" form="signInForm" type="submit">
+        <button className="sign-In__button" form="login" type="submit">
           Sign in
         </button>
       </section>
     </>
   );
-};
-
-export default SignIn;
+}

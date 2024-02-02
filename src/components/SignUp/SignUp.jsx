@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./SignUp.scss";
 
-export default function SignIn() {
+export default function SignUp() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,7 +18,7 @@ export default function SignIn() {
     setPassword(event.target.value);
   };
 
-  const handleSignin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
 
     const newUser = {
@@ -32,9 +32,9 @@ export default function SignIn() {
 
     try {
       const response = await axios.post("http://localhost:8080/user", newUser);
-      console.log("Signin Response:", response.data);
-      alert("Signed up successfully");
-      Navigate("/bucketlist"); //change it to homepage later
+      console.log("Signup Response:", response.data);
+      alert("Signed up successfully, Log in to your account");
+      Navigate("/");
     } catch (err) {
       console.error(err);
     }
@@ -45,7 +45,7 @@ export default function SignIn() {
       <section className="sign-up">
         <h1 className="sign-up__title">Sign up</h1>
 
-        <form onSubmit={handleSignin} className="sign-up__form" id="signupForm">
+        <form onSubmit={handleSignup} className="sign-up__form" id="signupForm">
           <label className="sign-up__label">
             Username
             <input

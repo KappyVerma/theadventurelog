@@ -1,15 +1,15 @@
 import "./BucketList.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import CreateBucketList from "../../components/CreateBucketList/CreateBucketList";
-import HeaderHome from "../../components/HeaderHome/HeaderHome";
+import BucketListCards from "../../components/BucketListCards/BucketListCards";
+import HeaderForHome from "../../components/HeaderForHome/HeaderForHome";
 
 export default function BucketList({ userId, setUserId }) {
   const [form, setForm] = useState({
     destination: "",
     person: "",
     date: "",
-    image: "",
+    image: null,
   });
 
   const [bucketListData, setBucketListData] = useState([]);
@@ -34,10 +34,17 @@ export default function BucketList({ userId, setUserId }) {
 
   const handleInputChange = (event) => {
     event.target.style.border = "1px solid #034694";
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value,
-    });
+    if (event.target.name === "image") {
+      setForm({
+        ...form,
+        [event.target.name]: event.target.files[0], // Use files[0] to get the selected file
+      });
+    } else {
+      setForm({
+        ...form,
+        [event.target.name]: event.target.value,
+      });
+    }
   };
 
   const handleBucketList = async (e) => {
@@ -45,27 +52,43 @@ export default function BucketList({ userId, setUserId }) {
     if (
       !e.target.destination.value ||
       !e.target.person.value ||
-      !e.target.date.value ||
-      !e.target.image.value
+      !e.target.date.value
     ) {
       e.target.destination.style.border = "1px solid #d22d2d";
       e.target.person.style.border = "1px solid #d22d2d";
       e.target.date.style.border = "1px solid #d22d2d";
-      e.target.image.style.border = "1px solid #d22d2d";
+      e.target.imageFile.style.border = "1px solid #d22d2d";
       return;
     }
     try {
-      const newData = {
-        destination: form.destination,
-        accompany: form.person,
-        duedate: form.date,
-        image_url: form.image,
-        user_id: userId,
-        status: false,
-      };
+      // const newData = {
+      //   destination: form.destination,
+      //   accompany: form.person,
+      //   duedate: form.date,
+      //   image: form.image,
+      //   user_id: userId,
+      //   status: false,
+      // };
+      console.log(form.destination);
+      const formData = new FormData();
+      formData.append("destination", form.destination);
+      formData.append("accompany", form.person);
+      formData.append("duedate", form.date);
+      formData.append("image", form.image);
+      formData.append("user_id", userId);
+      formData.append("status", false);
+
+      console.log("formdata");
+      for (const value of formData.values()) {
+        console.log(value);
+      }
 
       try {
-        await axios.post("http://localhost:8080/bucketlist", newData);
+        await axios.post("http://localhost:8080/bucketlist", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
         getBucketListData();
       } catch (e) {
         console.error(e);
@@ -84,7 +107,7 @@ export default function BucketList({ userId, setUserId }) {
 
   return (
     <>
-      <HeaderHome />
+      <HeaderForHome />
       <section className="bucket-List">
         <div className="goal">
           <h1 className="goal__title">Create new bucket list</h1>
@@ -92,6 +115,7 @@ export default function BucketList({ userId, setUserId }) {
             onSubmit={handleBucketList}
             className="goal__form"
             id="bucketListForm"
+            enctype="multipart/form-data"
           >
             <label className="goal__label">
               where do you want to travel
@@ -133,7 +157,7 @@ export default function BucketList({ userId, setUserId }) {
                 type="file"
                 className="goal__input"
                 name="image"
-                value={form.image}
+                // value={form.image}
                 onChange={handleInputChange}
               />
             </label>
@@ -142,8 +166,8 @@ export default function BucketList({ userId, setUserId }) {
             Save
           </button>
         </div>
-
-        <CreateBucketList bucketListData={bucketListData} />
+        {/* Bucket List Cards Component */}
+        <BucketListCards bucketListData={bucketListData} />
       </section>
     </>
   );
