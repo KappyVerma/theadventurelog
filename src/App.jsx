@@ -27,9 +27,14 @@ function App() {
         <Route path="home" element={<Home />} />
         <Route
           path="bucketlist"
-          element={<BucketList userId={userId} url={url} />}
+          element={
+            <BucketList userId={userId} setUserId={setUserId} url={url} />
+          }
         />
-        <Route path="venue" element={<NewVenueCard url={url} />} />
+        <Route
+          path="bucketlist/:id/venue"
+          element={<NewVenueCard url={url} />}
+        />
         <Route path="bucketlist/:id" element={<VenueCards url={url} />} />
       </Routes>
     </BrowserRouter>

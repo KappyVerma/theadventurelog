@@ -1,21 +1,35 @@
 import "./NewVenueCard.scss";
 import axios from "axios";
 import HeaderForHome from "../HeaderForHome/HeaderForHome";
+import { useState } from "react";
 
 export default function NewVenueCard({ url }) {
+  const [fileInput, setFileInput] = useState(null);
+
+  const handleFileInputChange = (event) => {
+    setFileInput(event.target.files[0]); // Use files[0] to get the selected file);
+  };
+
   const createVenueCard = async (event) => {
     event.preventDefault();
 
     const userId = localStorage.getItem("userId");
-    const bucketId = localStorage.getItem("bucketId");
+    const bucketId = localStorage.getItem("bucketId"); // chanfing this to state variable
 
-    const response = await axios.post(`${url}/venue`, {
-      visitedplaces: event.target.venue.value,
-      content: event.target.content.value,
-      image_url: event.target.image.value,
-      ratings: event.target.ratings.value,
-      user_id: userId,
-      bucketlist_id: bucketId,
+    console.log("Creating", event.target.files);
+
+    const formData = new FormData();
+    formData.append("visitedplaces", event.target.visitedplaces.value);
+    formData.append("content", event.target.content.value);
+    formData.append("ratings", event.target.ratings.value);
+    formData.append("imageFile", fileInput);
+    formData.append("user_id", userId);
+    formData.append("bucketlist_id", bucketId);
+
+    const response = await axios.post(`${url}/venue`, formData, {
+      headers: {
+        contentType: "multipart/form-data",
+      },
     });
     console.log(response);
   };
@@ -31,7 +45,11 @@ export default function NewVenueCard({ url }) {
         >
           <label className="newVenue__label">
             Venue Name
-            <input type="text" className="newVenue__input" name="venue" />
+            <input
+              type="text"
+              className="newVenue__input"
+              name="visitedplaces"
+            />
           </label>
           <label className="newVenue__label">
             Share your experience
@@ -47,7 +65,12 @@ export default function NewVenueCard({ url }) {
           </label>
           <label className="newVenue__label">
             Add a image of the venue
-            <input type="text" className="newVenue__input" name="image" />
+            <input
+              type="file"
+              className="newVenue__input"
+              name="imageFile"
+              onChange={handleFileInputChange}
+            />
           </label>
         </form>
         <button className="newVenue__button" form="venueForm">

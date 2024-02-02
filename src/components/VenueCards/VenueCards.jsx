@@ -33,10 +33,11 @@ export default function Venue() {
               <h2>{v.visitedplaces}</h2>
               <p>{v.content}</p>
               <p>Rating : {v.ratings}/5 </p>
+              <img src={`http://localhost:8080/${v.image_url}`} alt="" />
             </li>
           ))}
         </ul>
-        <Link to={"/venue"}>Add a new venue card</Link>
+        <Link to={`/bucketlist/${params.id}/venue`}>Add a new venue card</Link>
       </section>
     </>
   );

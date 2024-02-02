@@ -4,12 +4,11 @@ import { useState, useEffect } from "react";
 import BucketListCards from "../../components/BucketListCards/BucketListCards";
 import HeaderForHome from "../../components/HeaderForHome/HeaderForHome";
 
-export default function BucketList({ userId, url }) {
+export default function BucketList({ userId, url, setUserId }) {
   const [form, setForm] = useState({
     destination: "",
     person: "",
     date: "",
-    image: null,
   });
 
   const [bucketListData, setBucketListData] = useState([]);
@@ -24,25 +23,25 @@ export default function BucketList({ userId, url }) {
     }
   };
   useEffect(() => {
-    // setUserId(localStorage.getItem("userId"));
-    // console.log(localStorage.getItem("userId"));
-    // console.log(userId);
+    setUserId(localStorage.getItem("userId"));
+    console.log(localStorage.getItem("userId"));
+    console.log(userId);
     getBucketListData();
   }, []);
 
   const handleInputChange = (event) => {
     event.target.style.border = "1px solid #034694";
-    if (event.target.name === "image") {
-      setForm({
-        ...form,
-        [event.target.name]: event.target.files[0], // Use files[0] to get the selected file
-      });
-    } else {
-      setForm({
-        ...form,
-        [event.target.name]: event.target.value,
-      });
-    }
+    // if (event.target.name === "image") {
+    //   setForm({
+    //     ...form,
+    //     [event.target.name]: event.target.files[0], // Use files[0] to get the selected file
+    //   });
+    // } else {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+    // }
   };
 
   const handleBucketList = async (e) => {
@@ -59,34 +58,29 @@ export default function BucketList({ userId, url }) {
       return;
     }
     try {
-      // const newData = {
-      //   destination: form.destination,
-      //   accompany: form.person,
-      //   duedate: form.date,
-      //   image: form.image,
-      //   user_id: userId,
-      //   status: false,
-      // };
-      console.log(form.destination);
-      const formData = new FormData();
-      formData.append("destination", form.destination);
-      formData.append("accompany", form.person);
-      formData.append("duedate", form.date);
-      formData.append("image", form.image);
-      formData.append("user_id", userId);
-      formData.append("status", false);
+      const newData = {
+        destination: form.destination,
+        accompany: form.person,
+        duedate: form.date,
+        user_id: userId,
+        status: false,
+      };
+      // console.log(form.destination);
+      // const formData = new FormData();
+      // formData.append("destination", form.destination);
+      // formData.append("accompany", form.person);
+      // formData.append("duedate", form.date);
+      // formData.append("image", form.image);
+      // formData.append("user_id", userId);
+      // formData.append("status", false);
 
-      console.log("formdata");
-      for (const value of formData.values()) {
-        console.log(value);
-      }
+      // console.log("formdata");
+      // for (const value of formData.values()) {
+      //   console.log(value);
+      // }
 
       try {
-        await axios.post("http://localhost:8080/bucketlist", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        await axios.post("http://localhost:8080/bucketlist", newData);
         getBucketListData();
       } catch (e) {
         console.error(e);
@@ -96,7 +90,6 @@ export default function BucketList({ userId, url }) {
         destination: "",
         person: "",
         date: "",
-        image: "",
       });
     } catch (e) {
       console.log(e.message);
@@ -113,7 +106,6 @@ export default function BucketList({ userId, url }) {
             onSubmit={handleBucketList}
             className="goal__form"
             id="bucketListForm"
-            enctype="multipart/form-data"
           >
             <label className="goal__label">
               where do you want to travel
@@ -145,17 +137,6 @@ export default function BucketList({ userId, url }) {
                 className="goal__input"
                 name="person"
                 value={form.person}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label className="goal__label">
-              upload card photo
-              <input
-                autoComplete="off"
-                type="file"
-                className="goal__input"
-                name="image"
-                // value={form.image}
                 onChange={handleInputChange}
               />
             </label>
