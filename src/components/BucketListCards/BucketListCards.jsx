@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function CreateBucketList({ bucketListData }) {
+export default function CreateBucketList({ bucketListData, setBucketId }) {
   let settings = {
     dots: true,
     infinite: false,
@@ -56,7 +56,8 @@ export default function CreateBucketList({ bucketListData }) {
         <Slider {...settings}>
           {sortedBucketList?.map((data) => (
             <Link
-              to={`/bucketlist/${data.id}`}
+              to={`/bucketlist/venue`}
+              onClick={() => setBucketId(data.id)}
               key={data.id}
               className="card__link"
             >

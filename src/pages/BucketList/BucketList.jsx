@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import BucketListCards from "../../components/BucketListCards/BucketListCards";
 import HeaderForHome from "../../components/HeaderForHome/HeaderForHome";
 
-export default function BucketList({ userId, url, setUserId }) {
+export default function BucketList({ userId, url, setUserId, setBucketId }) {
   const [form, setForm] = useState({
     destination: "",
     person: "",
@@ -126,7 +126,10 @@ export default function BucketList({ userId, url, setUserId }) {
           </button>
         </div>
         {/* Bucket List Cards Component */}
-        <BucketListCards bucketListData={bucketListData} />
+        <BucketListCards
+          bucketListData={bucketListData}
+          setBucketId={setBucketId}
+        />
       </section>
     </>
   );

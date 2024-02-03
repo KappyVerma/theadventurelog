@@ -2,8 +2,15 @@ import "./NewVenueCard.scss";
 import axios from "axios";
 import HeaderForHome from "../HeaderForHome/HeaderForHome";
 import { useState } from "react";
+import { IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
-export default function NewVenueCard({ url }) {
+export default function NewVenueCard({
+  url,
+  bucketId,
+  handleCloseModal,
+  getVenueData,
+}) {
   const [fileInput, setFileInput] = useState(null);
 
   const handleFileInputChange = (event) => {
@@ -14,7 +21,7 @@ export default function NewVenueCard({ url }) {
     event.preventDefault();
 
     const userId = localStorage.getItem("userId");
-    const bucketId = localStorage.getItem("bucketId"); // chanfing this to state variable
+    // const bucketId = localStorage.getItem("bucketId"); // chanfing this to state variable
 
     console.log("Creating", event.target.files);
 
@@ -26,17 +33,25 @@ export default function NewVenueCard({ url }) {
     formData.append("user_id", userId);
     formData.append("bucketlist_id", bucketId);
 
-    const response = await axios.post(`${url}/venue`, formData, {
-      headers: {
-        contentType: "multipart/form-data",
-      },
-    });
-    console.log(response);
+    try {
+      await axios.post(`${url}/venue`, formData, {
+        headers: {
+          contentType: "multipart/form-data",
+        },
+      });
+      handleCloseModal();
+      getVenueData();
+    } catch (err) {
+      console.error(err);
+    }
   };
   return (
     <>
-      <HeaderForHome />
+      {/* <HeaderForHome /> */}
       <section className="newVenue">
+        <IconButton aria-label="close" onClick={handleCloseModal}>
+          <CloseIcon />
+        </IconButton>
         <h2 className="newVenue__title">Create a new venue card</h2>
         <form
           onSubmit={createVenueCard}

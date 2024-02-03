@@ -4,6 +4,8 @@
   width: 100%;
   padding: 1em;
   padding-top: 150px;
+  background-color: $secondary-color-mercury;
+  border-radius: 7px;
 
   @include tablet {
     padding: 100px;
