@@ -1,52 +1,81 @@
 @import "../../styles/partials/global";
 
-.bucket-List {
-  padding-top: 66.27px;
+.bucket-list {
+  padding: 150px 1em 1em;
+
+  @include tablet {
+    padding: 100px 3em 3em;
+  }
+  @include desktop {
+    padding: 100px 4em 4em;
+  }
   @include desktop {
     display: flex;
   }
-}
-.goal {
-  width: 100%;
-  padding: 1em;
 
-  @include tablet {
-    padding: 1.5em;
+  &__container {
+    width: 100%;
+    border-bottom: 1px solid $primary-color-black;
+    padding-bottom: 1.5em;
+    margin-bottom: 1.5em;
+    @include tablet {
+    }
+
+    @include desktop {
+      border-right: 1px solid $primary-color-black;
+      border-bottom: none;
+      padding: 0 2em 0 0;
+      width: 30%;
+    }
   }
-
-  @include desktop {
-    width: 30%;
-  }
-
   &__title {
-    font-size: 0.75rem;
-    line-height: 1.25rem;
+    font-size: 0.813rem;
+    line-height: 1.13rem;
     font-weight: 700;
     margin-bottom: 1.5em;
     text-transform: uppercase;
+    @include tablet {
+      font-size: 0.875rem;
+      line-height: 1.4rem;
+    }
   }
 
   &__label {
-    font-size: 0.675rem;
+    font-size: 0.625rem;
     line-height: 1.25rem;
     font-weight: 700;
-    text-transform: uppercase;
+
     @include tablet {
       font-size: 0.75rem;
       line-height: 1.25rem;
     }
   }
+
   &__input {
+    font-size: 0.813rem;
+    font-weight: 400;
+    height: 40px;
     width: 100%;
     padding: 0.675em;
     margin-bottom: 0.675em;
     border: none;
     border-radius: 4px;
-    border: 1px solid $secondary-color-gold;
+    border: 1px solid transparent;
+    box-shadow: 0 0 5px rgba($color: black, $alpha: 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+
+    @include tablet {
+      font-size: 0.875rem;
+      line-height: 1.4rem;
+      font-weight: 400;
+    }
 
     &:focus {
       outline: none;
-      border: 1px solid $primary-color-blue;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    }
+    &::placeholder {
+      color: #999;
     }
   }
   &__button {
@@ -63,11 +92,16 @@
     font-size: 0.675rem;
     font-weight: 700;
     text-transform: uppercase;
+    background-color: $primary-color-red;
+    color: $primary-color-white;
     transition: 0.2s linear;
 
     &:hover {
       background-color: $primary-color-blue;
       color: $primary-color-white;
+      transform: translateY(-0.25em);
+      box-shadow: 0 0.5em 0.5em -0.4em;
+      cursor: pointer;
     }
 
     @include tablet {

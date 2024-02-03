@@ -77,49 +77,51 @@ export default function BucketList({ userId, url, setUserId }) {
   return (
     <>
       <HeaderForHome />
-      <section className="bucket-List">
-        <div className="goal">
-          <h1 className="goal__title">Create new bucket list</h1>
+      <section className="bucket-list">
+        <div className="bucket-list__container">
+          <h1 className="bucket-list__title">Create a new bucket list</h1>
           <form
             onSubmit={handleBucketList}
-            className="goal__form"
+            className="bucket-list__form"
             id="bucketListForm"
           >
-            <label className="goal__label">
-              where do you want to travel
+            <label className="bucket-list__label">
+              Where is the destination spot
               <input
                 autoComplete="off"
                 type="text"
-                className="goal__input"
+                className="bucket-list__input"
+                placeholder="eg. morocco"
                 name="destination"
                 value={form.destination}
                 onChange={handleInputChange}
               />
             </label>
-            <label className="goal__label">
+            <label className="bucket-list__label">
               When do you want to travel
               <input
                 autoComplete="off"
                 type="date"
-                className="goal__input"
+                className="bucket-list__input"
                 name="date"
                 value={form.date}
                 onChange={handleInputChange}
               />
             </label>
-            <label className="goal__label">
-              With who would you be traveling
+            <label className="bucket-list__label">
+              Who is your travel partner
               <input
                 autoComplete="off"
                 type="text"
-                className="goal__input"
+                className="bucket-list__input"
+                placeholder="eg. friends, family or travelling solo"
                 name="person"
                 value={form.person}
                 onChange={handleInputChange}
               />
             </label>
           </form>
-          <button className="goal__button" form="bucketListForm">
+          <button className="bucket-list__button" form="bucketListForm">
             Save
           </button>
         </div>
