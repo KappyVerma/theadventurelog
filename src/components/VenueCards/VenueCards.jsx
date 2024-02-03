@@ -5,23 +5,21 @@ import { useState, useEffect } from "react";
 import HeaderForHome from "../HeaderForHome/HeaderForHome";
 import { Link } from "react-router-dom";
 
-export default function Venue() {
+export default function Venue({ url }) {
   const [venue, setVenue] = useState([]);
 
   const params = useParams();
 
   useEffect(() => {
     const getVenueData = async () => {
-      const response = await axios.get(
-        `http://localhost:8080/bucketlist/${params.id}/venue`
-      );
+      const response = await axios.get(`${url}/bucketlist/${params.id}/venue`);
       setVenue(response.data);
     };
     localStorage.setItem("bucketId", params.id);
     if (params) {
       getVenueData();
     }
-  }, [params]);
+  }, [params, url]);
 
   return (
     <>
@@ -33,7 +31,7 @@ export default function Venue() {
               <h2>{v.visitedplaces}</h2>
               <p>{v.content}</p>
               <p>Rating : {v.ratings}/5 </p>
-              <img src={`http://localhost:8080/${v.image_url}`} alt="" />
+              <img src={`${url}/${v.image_url}`} alt="" />
             </li>
           ))}
         </ul>

@@ -24,24 +24,15 @@ export default function BucketList({ userId, url, setUserId }) {
   };
   useEffect(() => {
     setUserId(localStorage.getItem("userId"));
-    console.log(localStorage.getItem("userId"));
-    console.log(userId);
     getBucketListData();
   }, []);
 
   const handleInputChange = (event) => {
     event.target.style.border = "1px solid #034694";
-    // if (event.target.name === "image") {
-    //   setForm({
-    //     ...form,
-    //     [event.target.name]: event.target.files[0], // Use files[0] to get the selected file
-    //   });
-    // } else {
     setForm({
       ...form,
       [event.target.name]: event.target.value,
     });
-    // }
   };
 
   const handleBucketList = async (e) => {
@@ -65,19 +56,6 @@ export default function BucketList({ userId, url, setUserId }) {
         user_id: userId,
         status: false,
       };
-      // console.log(form.destination);
-      // const formData = new FormData();
-      // formData.append("destination", form.destination);
-      // formData.append("accompany", form.person);
-      // formData.append("duedate", form.date);
-      // formData.append("image", form.image);
-      // formData.append("user_id", userId);
-      // formData.append("status", false);
-
-      // console.log("formdata");
-      // for (const value of formData.values()) {
-      //   console.log(value);
-      // }
 
       try {
         await axios.post("http://localhost:8080/bucketlist", newData);

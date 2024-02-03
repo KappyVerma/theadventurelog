@@ -2,6 +2,7 @@
 
 .card {
   padding: 1em;
+
   @include tablet {
     padding: 1.5em;
   }
