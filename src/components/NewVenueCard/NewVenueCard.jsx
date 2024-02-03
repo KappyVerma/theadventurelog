@@ -61,7 +61,13 @@ export default function NewVenueCard({ url }) {
           </label>
           <label className="newVenue__label">
             Ratings
-            <input type="number" className="newVenue__input " name="ratings" />
+            <input
+              type="number"
+              max={5}
+              min={0}
+              className="newVenue__input "
+              name="ratings"
+            />
           </label>
           <label className="newVenue__label">
             Add a image of the venue
