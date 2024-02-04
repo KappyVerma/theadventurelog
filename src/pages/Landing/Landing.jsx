@@ -16,7 +16,7 @@ export default function LoginPage() {
       <HeaderForLogin />
       <div className="login-page__background"></div>
       <p className="login-page__text">
-        Share you travel stories from far and wide
+        Share your travel stories from far and wide
       </p>
     </section>
   );
