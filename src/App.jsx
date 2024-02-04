@@ -10,6 +10,15 @@ import { useState } from "react";
 function App() {
   const [userId, setUserId] = useState();
   const [bucketId, setBucketId] = useState();
+  const [signupSuccess, setSignupSuccess] = useState(false);
+
+  const closeSignupSuccess = () => {
+    setSignupSuccess(false);
+  };
+
+  const handleSignupSuccess = () => {
+    setSignupSuccess(true);
+  };
 
   const url = process.env.REACT_APP_API_URL;
 
@@ -25,8 +34,21 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="login" element={<LogIn updateUserId={updateUserId} />} />
-        <Route path="signup" element={<SignUp />} />
+
+        <Route
+          path="login"
+          element={
+            <LogIn
+              updateUserId={updateUserId}
+              signupSuccess={signupSuccess}
+              closeSignupSuccess={closeSignupSuccess}
+            />
+          }
+        />
+        <Route
+          path="signup"
+          element={<SignUp handleSignupSuccess={handleSignupSuccess} />}
+        />
         <Route
           path="bucketlist"
           element={

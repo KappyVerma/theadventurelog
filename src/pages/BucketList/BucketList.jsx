@@ -79,7 +79,7 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
       <HeaderForHome />
       <section className="bucket-list">
         <div className="bucket-list__container">
-          <h1 className="bucket-list__title">Create a new bucket list</h1>
+          <h1 className="bucket-list__title">Create a new bucket list item</h1>
           <form
             onSubmit={handleBucketList}
             className="bucket-list__form"

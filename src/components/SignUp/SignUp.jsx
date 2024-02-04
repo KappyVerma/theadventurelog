@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
 import "./SignUp.scss";
 
-export default function SignUp() {
+export default function SignUp({ handleSignupSuccess }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -34,8 +35,8 @@ export default function SignUp() {
     try {
       const response = await axios.post("http://localhost:8080/user", newUser);
       console.log("Signup Response:", response.data);
-      alert("Signed up successfully, Log in to your account");
-      Navigate("/");
+      handleSignupSuccess();
+      Navigate("/login");
     } catch (err) {
       console.error(err);
     }
@@ -46,7 +47,7 @@ export default function SignUp() {
       <div className="sign-up">
         <h1 className="sign-up__title">Create An Account</h1>
         <h4 className="sign-up__sub-title">
-          create an account to enjoy all the services for free
+          Create an account to enjoy all the services for free
         </h4>
 
         <form onSubmit={handleSignup} className="sign-up__form" id="signupForm">

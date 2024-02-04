@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Modal from "@mui/material/Modal";
 import "./LogIn.scss";
 
-export default function LogIn({ updateUserId }) {
+export default function LogIn({
+  updateUserId,
+  closeSignupSuccess,
+  signupSuccess,
+}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -62,6 +67,11 @@ export default function LogIn({ updateUserId }) {
   return (
     <section className="main-container">
       <div className="sign-In">
+        <Modal open={signupSuccess} onClose={closeSignupSuccess}>
+          <p className="sign-In__success">
+            Signed up successfully, Log in to your account
+          </p>
+        </Modal>
         <Link to={"/"} className="sign-In__icon"></Link>
         <h1 className="sign-In__title">Member Login</h1>
 

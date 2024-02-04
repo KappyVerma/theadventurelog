@@ -58,12 +58,12 @@
   }
 
   &__title {
-    font-size: 0.813rem;
+    font-size: 0.875rem;
     line-height: 1.13rem;
     font-weight: 700;
     text-transform: capitalize;
     @include tablet {
-      font-size: 0.875rem;
+      font-size: 0.91rem;
       line-height: 1.4rem;
     }
   }
@@ -71,7 +71,7 @@
     font-size: 0.625rem;
     line-height: 1.25rem;
     font-weight: 400;
-    color: $primary-color-silver;
+    color: $secondary-color-darkBlack;
 
     @include tablet {
       font-size: 0.75rem;
@@ -88,7 +88,7 @@
     display: flex;
     align-items: center;
     border: none;
-    height: 40px;
+    height: 37px;
     padding: 1em 1em 1em 0.6em;
     border-radius: 3px;
     background-color: $primary-color-red;

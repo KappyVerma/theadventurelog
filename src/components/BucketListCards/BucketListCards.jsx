@@ -70,9 +70,11 @@ export default function CreateBucketList({ bucketListData, setBucketId }) {
               className="card__link"
             >
               <div className="card__container">
-                {/* {data.status === 0
-                  ? `${toDueDate(data.duedate)} days to go`
-                  : "Visited"} */}
+                <p className="card__duedate">
+                  {data.status === 0
+                    ? `${toDueDate(data.duedate)} days to go`
+                    : "Visited"}
+                </p>
                 <div className="card__details">
                   <p className="card__destination">{data.destination}</p>
                   <p className="card__">

@@ -119,4 +119,23 @@
     font-size: 0.81rem;
     color: red;
   }
+
+  &__success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $secondary-color-alabaster;
+    width: 90%;
+    height: 5%;
+    margin: 10px auto;
+    border-radius: 7px;
+    font-size: 0.675rem;
+    font-weight: 500;
+    line-height: 1.13rem;
+
+    @include tablet {
+      width: 50%;
+      font-size: 0.875rem;
+    }
+  }
 }
