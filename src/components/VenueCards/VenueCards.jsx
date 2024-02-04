@@ -51,15 +51,17 @@ export default function Venue({ url, bucketId }) {
             />
           </Modal>
 
-          <ul className="venue-list__container">
+          <ul>
             {venue.map((v) => (
-              <li key={v.id}>
-                <h3 className="venue-list__sub-title">{v.visitedplaces}</h3>
-                <h4 className="venue-list__date">
-                  On {v.when} in {v.visitedplaces}{" "}
-                </h4>
+              <li key={v.id} className="venue-list__container">
+                <div className="venue-list__block">
+                  <h3 className="venue-list__title">{v.visitedplaces}</h3>
+                  <h4 className="venue-list__date">
+                    <span>visited on</span> {v.when}
+                  </h4>
 
-                <Rating name="read-only" value={v.ratings} readOnly />
+                  <Rating name="read-only" value={v.ratings} readOnly />
+                </div>
                 <div className="venue-list__image-container">
                   <img
                     src={`${url}/${v.image_url}`}
@@ -67,11 +69,13 @@ export default function Venue({ url, bucketId }) {
                     className="venue-list__image"
                   />
                 </div>
-                <p className="venue_list__text">{v.content}</p>
+                <p className="venue-list__block venue-list__block--fonts">
+                  {v.content}
+                </p>
               </li>
             ))}
           </ul>
-          <button onClick={handleAddVenue}>Add a new venue card</button>
+          <button onClick={handleAddVenue}>New venue</button>
         </section>
       </section>
     </>

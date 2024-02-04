@@ -97,8 +97,6 @@
     transition: 0.2s linear;
 
     &:hover {
-      background-color: $primary-color-blue;
-      color: $primary-color-white;
       transform: translateY(-0.25em);
       box-shadow: 0 0.5em 0.5em -0.4em;
       cursor: pointer;

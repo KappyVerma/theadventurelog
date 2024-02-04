@@ -24,7 +24,7 @@
   }
 
   &__title {
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 0.813rem;
     line-height: 1.13rem;
     font-weight: 700;
@@ -37,16 +37,15 @@
     }
   }
   &__container {
-    width: 200px;
+    width: 180px;
     height: 40vh;
     margin: auto;
-    border-radius: 7px;
     background-color: $secondary-color-mercury;
     display: flex;
     justify-content: center;
-    align-items: end;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out;
+    padding: 1em;
 
     &:hover {
       transform: scale(1.05);
@@ -59,12 +58,12 @@
     }
 
     @include desktop {
-      width: 230px;
       height: 40vh;
     }
   }
+
   &__details {
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 0.813rem;
     font-weight: 400;
     line-height: 1.13rem;
@@ -77,6 +76,17 @@
       font-size: 0.875rem;
       font-weight: 700;
       line-height: 1.4rem;
+    }
+  }
+
+  &__destination {
+    font-size: 1rem;
+    font-weight: 900;
+    margin: 1em 0;
+    padding-bottom: 1em;
+    border-bottom: 1px solid red;
+    @include tablet {
+      font-size: 1.3rem;
     }
   }
 

@@ -91,7 +91,7 @@ export default function LogIn({ updateUserId }) {
             />
           </label>
         </form>
-        {<p className="sign-in__error">{error}</p>}
+        {<p className="sign-In__error">{error}</p>}
         <button className="sign-In__button" form="login" type="submit">
           Sign in
         </button>

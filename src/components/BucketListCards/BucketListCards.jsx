@@ -60,7 +60,7 @@ export default function CreateBucketList({ bucketListData, setBucketId }) {
   return (
     <>
       <section className="card">
-        <h2 className="card__title">Bucket List</h2>
+        <h2 className="card__title">Destinations</h2>
         <Slider {...settings} className="card__slider">
           {sortedBucketList?.map((data) => (
             <Link
@@ -70,14 +70,15 @@ export default function CreateBucketList({ bucketListData, setBucketId }) {
               className="card__link"
             >
               <div className="card__container">
-                {data.status === 0
+                {/* {data.status === 0
                   ? `${toDueDate(data.duedate)} days to go`
-                  : "Visited"}
+                  : "Visited"} */}
                 <div className="card__details">
-                  <p className="card__destination">{`${data.destination} ${
-                    data.accompany === "solo" ? " - " : "with"
-                  } ${data.accompany}`}</p>
-                  <p className="card__due">{data.duedate}</p>
+                  <p className="card__destination">{data.destination}</p>
+                  <p className="card__">
+                    {data.accompany === "solo" ? "  " : "with"} {data.accompany}
+                  </p>
+                  <p className="card__due"> on {data.duedate}</p>
                 </div>
               </div>
             </Link>
