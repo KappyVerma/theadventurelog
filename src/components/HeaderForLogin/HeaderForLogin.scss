@@ -9,6 +9,10 @@
   justify-content: center;
   align-items: center;
   padding: 1em;
+  backdrop-filter: blur(10px);
+  @include tablet {
+    backdrop-filter: blur(1px);
+  }
 
   @include tablet {
     justify-content: space-between;

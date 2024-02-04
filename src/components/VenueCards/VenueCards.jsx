@@ -4,12 +4,15 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import HeaderForHome from "../HeaderForHome/HeaderForHome";
 import Modal from "@mui/material/Modal";
-import { Link } from "react-router-dom";
 import NewVenueCard from "../NewVenueCard/NewVenueCard";
+import { useNavigate } from "react-router-dom";
+import { Rating } from "@mui/material";
 
 export default function Venue({ url, bucketId }) {
   const [venue, setVenue] = useState([]);
   const [addVenue, setAddVenue] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleAddVenue = () => {
     setAddVenue(true);
@@ -23,10 +26,10 @@ export default function Venue({ url, bucketId }) {
     setVenue(response.data);
   };
   useEffect(() => {
-    // localStorage.setItem("bucketId", params.id);
-
     if (bucketId) {
       getVenueData();
+    } else {
+      navigate("/bucketlist");
     }
   }, [bucketId]);
 
@@ -51,9 +54,12 @@ export default function Venue({ url, bucketId }) {
           <ul className="venue-list__container">
             {venue.map((v) => (
               <li key={v.id}>
-                <h2 className="venue-list__title">{v.visitedplaces}</h2>
-                <p className="venue_list__text">{v.content}</p>
-                <p className="venue-list__text">Rating : {v.ratings}/5 </p>
+                <h3 className="venue-list__sub-title">{v.visitedplaces}</h3>
+                <h4 className="venue-list__date">
+                  On {v.when} in {v.visitedplaces}{" "}
+                </h4>
+
+                <Rating name="read-only" value={v.ratings} readOnly />
                 <div className="venue-list__image-container">
                   <img
                     src={`${url}/${v.image_url}`}
@@ -61,6 +67,7 @@ export default function Venue({ url, bucketId }) {
                     className="venue-list__image"
                   />
                 </div>
+                <p className="venue_list__text">{v.content}</p>
               </li>
             ))}
           </ul>

@@ -49,11 +49,19 @@ export default function CreateBucketList({ bucketListData, setBucketId }) {
     return dueDateA - dueDateB;
   });
 
+  const toDueDate = (duedate) => {
+    let Result = Math.round(
+      (new Date(duedate).getTime() - new Date().getTime()) /
+        (1000 * 60 * 60 * 24)
+    );
+    return Result.toFixed(0);
+  };
+
   return (
     <>
       <section className="card">
         <h2 className="card__title">Bucket List</h2>
-        <Slider {...settings}>
+        <Slider {...settings} className="card__slider">
           {sortedBucketList?.map((data) => (
             <Link
               to={`/bucketlist/venue`}
@@ -62,6 +70,9 @@ export default function CreateBucketList({ bucketListData, setBucketId }) {
               className="card__link"
             >
               <div className="card__container">
+                {data.status === 0
+                  ? `${toDueDate(data.duedate)} days to go`
+                  : "Visited"}
                 <div className="card__details">
                   <p className="card__destination">{`${data.destination} ${
                     data.accompany === "solo" ? " - " : "with"

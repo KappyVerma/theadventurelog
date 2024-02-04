@@ -13,6 +13,16 @@
     padding-left: 2.5em;
   }
 
+  &__slider {
+    height: 40vh;
+    @include tablet {
+      height: 45vh;
+    }
+    @include desktop {
+      height: 40vh;
+    }
+  }
+
   &__title {
     text-transform: uppercase;
     font-size: 0.813rem;

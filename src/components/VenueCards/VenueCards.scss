@@ -1,5 +1,13 @@
 @import "../../styles/partials/global";
-.venue {
-  padding-top: 100px;
+.venue-list {
+  padding-top: 150px;
   width: 70%;
+
+  &__title {
+    color: red;
+  }
+
+  &__image {
+    width: 100%;
+  }
 }

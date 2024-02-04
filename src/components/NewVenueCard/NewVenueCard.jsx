@@ -1,8 +1,7 @@
 import "./NewVenueCard.scss";
 import axios from "axios";
-import HeaderForHome from "../HeaderForHome/HeaderForHome";
 import { useState } from "react";
-import { IconButton } from "@mui/material";
+import { IconButton, Rating } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 export default function NewVenueCard({
@@ -12,6 +11,7 @@ export default function NewVenueCard({
   getVenueData,
 }) {
   const [fileInput, setFileInput] = useState(null);
+  const [ratingValue, setRatingValue] = useState(0);
 
   const handleFileInputChange = (event) => {
     setFileInput(event.target.files[0]); // Use files[0] to get the selected file);
@@ -26,9 +26,10 @@ export default function NewVenueCard({
     console.log("Creating", event.target.files);
 
     const formData = new FormData();
+    formData.append("when", event.target.date.value);
     formData.append("visitedplaces", event.target.visitedplaces.value);
     formData.append("content", event.target.content.value);
-    formData.append("ratings", event.target.ratings.value);
+    formData.append("ratings", ratingValue);
     formData.append("imageFile", fileInput);
     formData.append("user_id", userId);
     formData.append("bucketlist_id", bucketId);
@@ -59,6 +60,10 @@ export default function NewVenueCard({
           id="venueForm"
         >
           <label className="newVenue__label">
+            When
+            <input type="date" className="newVenue__input" name="date" />
+          </label>
+          <label className="newVenue__label">
             Venue Name
             <input
               type="text"
@@ -75,13 +80,12 @@ export default function NewVenueCard({
             />
           </label>
           <label className="newVenue__label">
-            Ratings
-            <input
-              type="number"
-              max={5}
-              min={0}
-              className="newVenue__input "
-              name="ratings"
+            <Rating
+              name="simple-controlled"
+              value={ratingValue}
+              onChange={(_event, newValue) => {
+                setRatingValue(newValue);
+              }}
             />
           </label>
           <label className="newVenue__label">

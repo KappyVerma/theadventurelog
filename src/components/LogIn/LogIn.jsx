@@ -7,6 +7,7 @@ import "./LogIn.scss";
 export default function LogIn({ updateUserId }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const Navigate = useNavigate();
 
@@ -54,6 +55,7 @@ export default function LogIn({ updateUserId }) {
       }
     } catch (error) {
       console.error(error);
+      setError(error.response.data.error);
     }
   };
 
@@ -89,6 +91,7 @@ export default function LogIn({ updateUserId }) {
             />
           </label>
         </form>
+        {<p className="sign-in__error">{error}</p>}
         <button className="sign-In__button" form="login" type="submit">
           Sign in
         </button>
