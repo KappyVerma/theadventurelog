@@ -1,6 +1,5 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
 import Landing from "./pages/Landing/Landing";
 import BucketList from "./pages/BucketList/BucketList";
 import LogIn from "./components/LogIn/LogIn";
@@ -28,8 +27,6 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="login" element={<LogIn updateUserId={updateUserId} />} />
         <Route path="signup" element={<SignUp />} />
-        {/* ignore home route */}
-        <Route path="home" element={<Home />} />
         <Route
           path="bucketlist"
           element={

@@ -72,4 +72,24 @@
     width: 100%;
     pointer-events: none;
   }
+
+  &__button {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    border: none;
+    height: 40px;
+    padding: 1em 1em 1em 0.6em;
+    border-radius: 3px;
+    background-color: $primary-color-red;
+    color: white;
+    font-weight: 500;
+  }
+
+  &__add-icon {
+    height: 24px;
+    width: 24px;
+    background-image: url("../../assets/icons/add.svg");
+    color: blue;
+  }
 }

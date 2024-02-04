@@ -6,7 +6,8 @@ import HeaderForHome from "../HeaderForHome/HeaderForHome";
 import Modal from "@mui/material/Modal";
 import NewVenueCard from "../NewVenueCard/NewVenueCard";
 import { useNavigate } from "react-router-dom";
-import { Rating } from "@mui/material";
+import { IconButton, Rating } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
 
 export default function Venue({ url, bucketId }) {
   const [venue, setVenue] = useState([]);
@@ -38,6 +39,10 @@ export default function Venue({ url, bucketId }) {
       <section>
         <HeaderForHome />
         <section className="venue-list">
+          <button className="venue-list__button" onClick={handleAddVenue}>
+            {" "}
+            <span className="venue-list__add-icon"></span>Local Attractions
+          </button>
           <Modal
             open={addVenue}
             onClose={closeAddVenue}
@@ -54,10 +59,13 @@ export default function Venue({ url, bucketId }) {
           <ul>
             {venue.map((v) => (
               <li key={v.id} className="venue-list__container">
+                <IconButton aria-label="close" onclick={v.id}>
+                  <EditIcon />
+                </IconButton>
                 <div className="venue-list__block">
                   <h3 className="venue-list__title">{v.visitedplaces}</h3>
                   <h4 className="venue-list__date">
-                    <span>visited on</span> {v.when}
+                    {v.when} in {v.destination}
                   </h4>
 
                   <Rating name="read-only" value={v.ratings} readOnly />
@@ -75,7 +83,6 @@ export default function Venue({ url, bucketId }) {
               </li>
             ))}
           </ul>
-          <button onClick={handleAddVenue}>Local Attrections</button>
         </section>
       </section>
     </>

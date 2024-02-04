@@ -48,7 +48,6 @@ export default function NewVenueCard({
   };
   return (
     <>
-      {/* <HeaderForHome /> */}
       <section className="newVenue">
         <IconButton aria-label="close" onClick={handleCloseModal}>
           <CloseIcon />
@@ -66,6 +65,7 @@ export default function NewVenueCard({
           <label className="newVenue__label">
             Attraction Name
             <input
+              autoComplete="off"
               type="text"
               className="newVenue__input"
               name="visitedplaces"
