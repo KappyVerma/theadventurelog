@@ -8,18 +8,35 @@ import NewVenueCard from "../NewVenueCard/NewVenueCard";
 import { useNavigate } from "react-router-dom";
 import { IconButton, Rating } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function Venue({ url, bucketId }) {
   const [venue, setVenue] = useState([]);
   const [addVenue, setAddVenue] = useState(false);
+  const [editVenue, setEditVenue] = useState(false);
+  const [venueData, setVenueData] = useState({});
 
   const navigate = useNavigate();
 
   const handleAddVenue = () => {
     setAddVenue(true);
   };
+  const handleEditVenue = (venueData) => {
+    setEditVenue(true);
+    setVenueData(venueData);
+  };
   const closeAddVenue = () => {
     setAddVenue(false);
+    setEditVenue(false);
+  };
+
+  const handleDeleteVenue = async (venueId) => {
+    try {
+      await axios.delete(`${url}/venue/${venueId}`);
+      getVenueData();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const getVenueData = async () => {
@@ -44,26 +61,46 @@ export default function Venue({ url, bucketId }) {
             <span className="venue-list__add-icon"></span>Local Attractions
           </button>
           <Modal
-            open={addVenue}
+            sx={{ backdropFilter: "blur(10px)" }}
+            open={addVenue || editVenue}
             onClose={closeAddVenue}
             className="venue-list__modal"
           >
             <NewVenueCard
               url={url}
               bucketId={bucketId}
+              isEdit={editVenue}
               handleCloseModal={closeAddVenue}
               getVenueData={getVenueData}
+              venueData={venueData}
             />
           </Modal>
 
           <ul>
             {venue.map((v) => (
               <li key={v.id} className="venue-list__container">
-                <IconButton aria-label="close" onclick={v.id}>
-                  <EditIcon />
-                </IconButton>
                 <div className="venue-list__block">
-                  <h3 className="venue-list__title">{v.visitedplaces}</h3>
+                  <div className="venue-list__flex">
+                    <h3 className="venue-list__title">{v.visitedplaces}</h3>
+                    <div className="venue-list__action">
+                      <IconButton
+                        aria-label="edit"
+                        size="small"
+                        onClick={() => handleEditVenue(v)}
+                        sx={{ fontSize: "1rem" }}
+                      >
+                        <EditIcon />
+                      </IconButton>
+                      <IconButton
+                        aria-label="delete"
+                        size="small"
+                        onClick={() => handleDeleteVenue(v.id)}
+                        sx={{ fontSize: "1rem" }}
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </div>
+                  </div>
                   <h4 className="venue-list__date">
                     {v.when} in {v.destination}
                   </h4>

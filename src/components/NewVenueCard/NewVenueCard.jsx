@@ -9,9 +9,13 @@ export default function NewVenueCard({
   bucketId,
   handleCloseModal,
   getVenueData,
+  venueData,
+  isEdit,
 }) {
   const [fileInput, setFileInput] = useState(null);
-  const [ratingValue, setRatingValue] = useState(0);
+  const [ratingValue, setRatingValue] = useState(
+    isEdit ? venueData?.ratings : 0
+  );
 
   const handleFileInputChange = (event) => {
     setFileInput(event.target.files[0]); // Use files[0] to get the selected file);
@@ -21,9 +25,6 @@ export default function NewVenueCard({
     event.preventDefault();
 
     const userId = localStorage.getItem("userId");
-    // const bucketId = localStorage.getItem("bucketId"); // chanfing this to state variable
-
-    console.log("Creating", event.target.files);
 
     const formData = new FormData();
     formData.append("when", event.target.date.value);
@@ -34,12 +35,24 @@ export default function NewVenueCard({
     formData.append("user_id", userId);
     formData.append("bucketlist_id", bucketId);
 
+    const editData = {
+      when: event.target.date.value,
+      visitedplaces: event.target.visitedplaces.value,
+      content: event.target.content.value,
+      ratings: ratingValue,
+    };
     try {
-      await axios.post(`${url}/venue`, formData, {
-        headers: {
-          contentType: "multipart/form-data",
-        },
-      });
+      isEdit
+        ? await axios.patch(`${url}/venue/${venueData.id}`, editData, {
+            headers: {
+              contentType: "application/json",
+            },
+          })
+        : await axios.post(`${url}/venue`, formData, {
+            headers: {
+              contentType: "multipart/form-data",
+            },
+          });
       handleCloseModal();
       getVenueData();
     } catch (err) {
@@ -49,10 +62,12 @@ export default function NewVenueCard({
   return (
     <>
       <section className="newVenue">
-        <IconButton aria-label="close" onClick={handleCloseModal}>
-          <CloseIcon />
-        </IconButton>
-        <h2 className="newVenue__title">Add a new Attraction</h2>
+        <div className="newVenue__flex">
+          <h2 className="newVenue__title">Add a new Attraction</h2>
+          <IconButton aria-label="close" onClick={handleCloseModal}>
+            <CloseIcon />
+          </IconButton>
+        </div>
         <form
           onSubmit={createVenueCard}
           className="newVenue__form"
@@ -60,7 +75,12 @@ export default function NewVenueCard({
         >
           <label className="newVenue__label">
             When
-            <input type="date" className="newVenue__input" name="date" />
+            <input
+              type="date"
+              className="newVenue__input"
+              name="date"
+              defaultValue={isEdit ? venueData.when : null}
+            />
           </label>
           <label className="newVenue__label">
             Attraction Name
@@ -69,6 +89,7 @@ export default function NewVenueCard({
               type="text"
               className="newVenue__input"
               name="visitedplaces"
+              defaultValue={isEdit ? venueData.visitedplaces : ""}
             />
           </label>
           <label className="newVenue__label">
@@ -77,9 +98,11 @@ export default function NewVenueCard({
               type="text"
               className="newVenue__input newVenue__input--height"
               name="content"
+              defaultValue={isEdit ? venueData.content : ""}
             />
           </label>
           <label className="newVenue__label">
+            {"Rating "}
             <Rating
               name="simple-controlled"
               value={ratingValue}
@@ -88,18 +111,20 @@ export default function NewVenueCard({
               }}
             />
           </label>
-          <label className="newVenue__label">
-            Add a image of the venue
-            <input
-              type="file"
-              className="newVenue__input"
-              name="imageFile"
-              onChange={handleFileInputChange}
-            />
-          </label>
+          {!isEdit && (
+            <label className="newVenue__label">
+              Add a image of the venue
+              <input
+                type="file"
+                className="newVenue__input"
+                name="imageFile"
+                onChange={handleFileInputChange}
+              />
+            </label>
+          )}
         </form>
         <button className="newVenue__button" form="venueForm">
-          Post
+          Submit
         </button>
       </section>
     </>

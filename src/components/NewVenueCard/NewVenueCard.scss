@@ -1,19 +1,32 @@
 @import "../../styles/partials/global";
 
 .newVenue {
-  width: 100%;
+  width: 90%;
   padding: 1em;
-  padding-top: 150px;
-  background-color: $secondary-color-mercury;
+  margin: auto;
+  position: relative;
+  top: 10%;
+  background-color: $secondary-color-alabaster;
+  width: 90%;
   border-radius: 7px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+
+  padding: 2em 1em;
 
   @include tablet {
-    padding: 100px;
+    width: 50%;
+    padding: 2.5em 1.5em;
+    top: 20%;
   }
 
   @include desktop {
-    width: 50%;
-    margin: auto;
+    width: 30%;
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__title {
@@ -65,10 +78,13 @@
     font-weight: 700;
     text-transform: uppercase;
     transition: 0.2s linear;
+    background-color: $primary-color-red;
+    color: $primary-color-white;
 
     &:hover {
-      background-color: $primary-color-blue;
-      color: $primary-color-white;
+      transform: translateY(-0.25em);
+      box-shadow: 0 0.5em 0.5em -0.4em rgb(239, 37, 64);
+      cursor: pointer;
     }
 
     @include tablet {
