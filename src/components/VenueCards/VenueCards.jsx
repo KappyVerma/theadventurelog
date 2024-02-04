@@ -69,13 +69,13 @@ export default function Venue({ url, bucketId }) {
                     className="venue-list__image"
                   />
                 </div>
-                <p className="venue-list__block venue-list__block--fonts">
-                  {v.content}
-                </p>
+                <div className="venue-list__block">
+                  <p className="venue-list__block--fonts">{v.content}</p>
+                </div>
               </li>
             ))}
           </ul>
-          <button onClick={handleAddVenue}>New venue</button>
+          <button onClick={handleAddVenue}>Local Attrections</button>
         </section>
       </section>
     </>

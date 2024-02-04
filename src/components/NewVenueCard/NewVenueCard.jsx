@@ -53,7 +53,7 @@ export default function NewVenueCard({
         <IconButton aria-label="close" onClick={handleCloseModal}>
           <CloseIcon />
         </IconButton>
-        <h2 className="newVenue__title">Create a new venue card</h2>
+        <h2 className="newVenue__title">Add a new Attraction</h2>
         <form
           onSubmit={createVenueCard}
           className="newVenue__form"
@@ -64,7 +64,7 @@ export default function NewVenueCard({
             <input type="date" className="newVenue__input" name="date" />
           </label>
           <label className="newVenue__label">
-            Venue Name
+            Attraction Name
             <input
               type="text"
               className="newVenue__input"

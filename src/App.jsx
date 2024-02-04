@@ -5,7 +5,6 @@ import Landing from "./pages/Landing/Landing";
 import BucketList from "./pages/BucketList/BucketList";
 import LogIn from "./components/LogIn/LogIn";
 import SignUp from "./components/SignUp/SignUp";
-import NewVenueCard from "./components/NewVenueCard/NewVenueCard";
 import VenueCards from "./components/VenueCards/VenueCards";
 import { useState } from "react";
 
@@ -42,10 +41,6 @@ function App() {
             />
           }
         />
-        {/* <Route
-          path="bucketlist/:id/venue"
-          element={<NewVenueCard url={url} />}
-        /> */}
         <Route
           path="bucketlist/venue"
           element={<VenueCards url={url} bucketId={bucketId} />}

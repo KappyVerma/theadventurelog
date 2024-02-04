@@ -12,6 +12,7 @@
   }
   &__block {
     padding: 0 0.3em;
+    overflow: hidden;
     @include tablet {
       padding: 0 0.6em;
     }
@@ -22,6 +23,9 @@
       font-size: 0.813rem;
       line-height: 1.13rem;
       font-weight: 400;
+      white-space: wrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       @include tablet {
         font-size: 0.875rem;
         line-height: 1.4rem;
