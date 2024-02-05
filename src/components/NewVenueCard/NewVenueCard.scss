@@ -46,6 +46,13 @@
       font-size: 0.75rem;
       line-height: 1.25rem;
     }
+
+    &--mod {
+      display: inline-flex;
+      align-items: end;
+      width: 100%;
+      margin-bottom: 0.675em;
+    }
   }
   &__input {
     width: 100%;

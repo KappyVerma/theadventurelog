@@ -35,6 +35,19 @@ export default function NewVenueCard({
     formData.append("user_id", userId);
     formData.append("bucketlist_id", bucketId);
 
+    if (
+      !event.target.date.value ||
+      !event.target.visitedplaces.value ||
+      !event.target.content.value ||
+      !fileInput
+    ) {
+      event.target.date.style.border = "1px solid #d22d2d";
+      event.target.visitedplaces.style.border = "1px solid #d22d2d";
+      event.target.content.style.border = "1px solid #d22d2d";
+
+      return;
+    }
+
     const editData = {
       when: event.target.date.value,
       visitedplaces: event.target.visitedplaces.value,
@@ -101,9 +114,10 @@ export default function NewVenueCard({
               defaultValue={isEdit ? venueData.content : ""}
             />
           </label>
-          <label className="newVenue__label">
+          <label className="newVenue__label newVenue__label--mod">
             {"Rating "}
             <Rating
+              sx={{ paddingLeft: "5px" }}
               name="simple-controlled"
               value={ratingValue}
               onChange={(_event, newValue) => {

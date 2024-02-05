@@ -216,7 +216,7 @@ export default function CreateBucketList({
         </Modal>
         <Slider {...settings} className="card__slider">
           {sortedBucketList?.map((data) => (
-            <>
+            <li key={data.id}>
               <div
                 className="card__container"
                 style={
@@ -263,7 +263,6 @@ export default function CreateBucketList({
                 <Link
                   to={`/bucketlist/venue`}
                   onClick={() => setBucketId(data.id)}
-                  key={data.id}
                   className="card__link"
                 >
                   <div className="card__details">
@@ -276,7 +275,7 @@ export default function CreateBucketList({
                   </div>
                 </Link>
               </div>
-            </>
+            </li>
           ))}
         </Slider>
       </section>
