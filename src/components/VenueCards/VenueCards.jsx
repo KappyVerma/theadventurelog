@@ -58,7 +58,7 @@ export default function Venue({ url, bucketId }) {
         <section className="venue-list">
           <button className="venue-list__button" onClick={handleAddVenue}>
             {" "}
-            <span className="venue-list__add-icon"></span>Local Attractions
+            {/* <span className="venue-list__add-icon"></span> */}
           </button>
           <Modal
             sx={{ backdropFilter: "blur(10px)" }}
@@ -89,7 +89,11 @@ export default function Venue({ url, bucketId }) {
                         onClick={() => handleEditVenue(v)}
                         sx={{ fontSize: "1rem" }}
                       >
-                        <EditIcon />
+                        <EditIcon
+                          sx={{
+                            fontSize: "18px",
+                          }}
+                        />
                       </IconButton>
                       <IconButton
                         aria-label="delete"
@@ -97,7 +101,11 @@ export default function Venue({ url, bucketId }) {
                         onClick={() => handleDeleteVenue(v.id)}
                         sx={{ fontSize: "1rem" }}
                       >
-                        <DeleteIcon />
+                        <DeleteIcon
+                          sx={{
+                            fontSize: "18px",
+                          }}
+                        />
                       </IconButton>
                     </div>
                   </div>

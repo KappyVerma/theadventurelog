@@ -11,10 +11,10 @@
     width: 50%;
   }
   &__block {
-    padding: 0 0.3em;
+    padding: 0 0.6em;
     overflow: hidden;
     @include tablet {
-      padding: 0 0.6em;
+      padding: 0 1em;
     }
     @include desktop {
       padding: 0 1em;
@@ -91,15 +91,26 @@
     height: 37px;
     padding: 1em 1em 1em 0.6em;
     border-radius: 3px;
-    background-color: $primary-color-red;
+    background-color: $primary-color-white;
     color: white;
     font-weight: 500;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    background-image: url("../../assets/icons/add.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: fixed;
+    z-index: 1;
+    bottom: 20px;
+    left: 50%;
+
+    &:hover {
+      background-color: $primary-color-red;
+    }
   }
 
   &__add-icon {
-    height: 24px;
-    width: 24px;
-    background-image: url("../../assets/icons/add.svg");
     color: blue;
   }
 }

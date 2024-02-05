@@ -1,3 +1,5 @@
+https://github.com/KappyVerma/karan-verma-capstone-api
+
 # The Travel Tea
 
 ## Overview
@@ -33,7 +35,6 @@ Enter The Travel Tea — our solution to this dilemma. It's a dedicated space fo
 - **Frontend**: React
 - **Backend**: Express
 - **Database**: MySQL
-- **Authentication**: JWT
 
 ### APIs
 
@@ -42,9 +43,8 @@ Not using any external API.
 ### Sitemap
 
 - **Sign-in / Sign-up Page**
-- **Profile Page**
 - **Bucket List Page**
-- **Destination Page**
+- **Local Attractions Page**
 
 ### Mockups
 
@@ -85,10 +85,6 @@ Not using any external API.
   - POST /bucketlist
   - PUT /bucketlist/:id
   - DELETE /bucketlist/:id
-
-### Auth
-
-I will be using JWT for authentication.
 
 ## Roadmap
 

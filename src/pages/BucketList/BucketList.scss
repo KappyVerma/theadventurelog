@@ -2,20 +2,22 @@
 
 .bucket-list {
   padding: 150px 1em 1em;
+  height: 100vh;
 
   @include tablet {
     padding: 100px 3em 3em;
   }
   @include desktop {
     padding: 100px 4em 4em;
-  }
-  @include desktop {
     display: flex;
+    align-items: start;
   }
 
   &__container {
     width: 100%;
     border-bottom: 1px solid $primary-color-black;
+    color: $primary-color-white;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
     padding-bottom: 1.5em;
     margin-bottom: 1.5em;
 
@@ -34,7 +36,7 @@
     line-height: 1.13rem;
     font-weight: 700;
     margin-bottom: 1.5em;
-    text-transform: uppercase;
+    text-transform: capitalize;
     @include tablet {
       font-size: 0.875rem;
       line-height: 1.4rem;

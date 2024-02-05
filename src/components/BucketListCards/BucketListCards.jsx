@@ -150,12 +150,10 @@ export default function CreateBucketList({
           sx={{ backdropFilter: "blur(10px)" }}
           open={editBucket}
           onClose={closeEditBucket}
-          className="venue-list__modal"
+          className="card__modal"
         >
-          <div className="bucket-list__container">
-            <h1 className="bucket-list__title">
-              Create a new bucket list item
-            </h1>
+          <div className="card__modal--mod">
+            <h1 className="bucket-list__title">Edit bucket list item</h1>
             <form
               onSubmit={handleBucketList}
               className="bucket-list__form"
@@ -219,41 +217,55 @@ export default function CreateBucketList({
         <Slider {...settings} className="card__slider">
           {sortedBucketList?.map((data) => (
             <>
-              <IconButton
-                aria-label="edit"
-                size="small"
-                onClick={() => handleEditBucket(data)}
-                sx={{ fontSize: "1rem" }}
+              <div
+                className="card__container"
+                style={
+                  data.status === 1 || toDueDate(data.duedate) < 0
+                    ? { filter: "grayscale(1)" }
+                    : {}
+                }
               >
-                <EditIcon />
-              </IconButton>
-              <IconButton
-                aria-label="delete"
-                size="small"
-                onClick={() => handleDeleteBucket(data.id)}
-                sx={{ fontSize: "1rem" }}
-              >
-                <DeleteIcon />
-              </IconButton>
-              <Link
-                to={`/bucketlist/venue`}
-                onClick={() => setBucketId(data.id)}
-                key={data.id}
-                className="card__link"
-              >
-                <div
-                  className="card__container"
-                  style={
-                    data.status === 1 || toDueDate(data.duedate) < 0
-                      ? { filter: "grayscale(1)" }
-                      : {}
-                  }
+                <div className="card__buttons">
+                  <IconButton
+                    aria-label="edit"
+                    size="small"
+                    onClick={() => handleEditBucket(data)}
+                    sx={{ fontSize: ".5em" }}
+                  >
+                    <EditIcon
+                      sx={{
+                        fontSize: "16px",
+                        ":hover": { color: "white" },
+                        transition: "color 0.3s linear",
+                      }}
+                    />
+                  </IconButton>
+                  <IconButton
+                    aria-label="delete"
+                    size="small"
+                    onClick={() => handleDeleteBucket(data.id)}
+                    sx={{ fontSize: "1rem" }}
+                  >
+                    <DeleteIcon
+                      sx={{
+                        fontSize: "16px",
+                        ":hover": { color: "white" },
+                        transition: "color 0.3s linear",
+                      }}
+                    />
+                  </IconButton>
+                </div>
+                <p className="card__duedate">
+                  {data.status === 0 && toDueDate(data.duedate) >= 0
+                    ? `${toDueDate(data.duedate)} days to go`
+                    : "Visited"}
+                </p>
+                <Link
+                  to={`/bucketlist/venue`}
+                  onClick={() => setBucketId(data.id)}
+                  key={data.id}
+                  className="card__link"
                 >
-                  <p className="card__duedate">
-                    {data.status === 0 && toDueDate(data.duedate) >= 0
-                      ? `${toDueDate(data.duedate)} days to go`
-                      : "Visited"}
-                  </p>
                   <div className="card__details">
                     <p className="card__destination">{data.destination}</p>
                     <p className="card__">
@@ -262,8 +274,8 @@ export default function CreateBucketList({
                     </p>
                     <p className="card__due"> {data.duedate}</p>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </>
           ))}
         </Slider>
