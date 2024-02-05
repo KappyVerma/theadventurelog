@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import BucketListCards from "../../components/BucketListCards/BucketListCards";
 import HeaderForHome from "../../components/HeaderForHome/HeaderForHome";
+import { getCurrentDate } from "../../utils";
 
 export default function BucketList({ userId, url, setUserId, setBucketId }) {
   const [form, setForm] = useState({
@@ -29,23 +30,30 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
 
   const handleInputChange = (event) => {
     event.target.style.border = "1px solid #034694";
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value,
-    });
+    if (event.target.type === "checkbox") {
+      setForm({
+        ...form,
+        [event.target.name]: event.target.checked,
+      });
+    } else {
+      setForm({
+        ...form,
+        [event.target.name]: event.target.value,
+      });
+    }
   };
 
   const handleBucketList = async (e) => {
     e.preventDefault();
     if (
       !e.target.destination.value ||
-      !e.target.person.value ||
-      !e.target.date.value
+      !e.target.person.value
+      // !e.target.date.value
     ) {
       e.target.destination.style.border = "1px solid #d22d2d";
       e.target.person.style.border = "1px solid #d22d2d";
       e.target.date.style.border = "1px solid #d22d2d";
-      e.target.imageFile.style.border = "1px solid #d22d2d";
+
       return;
     }
     try {
@@ -54,7 +62,7 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
         accompany: form.person,
         duedate: form.date,
         user_id: userId,
-        status: false,
+        status: form.status,
       };
 
       try {
@@ -68,6 +76,7 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
         destination: "",
         person: "",
         date: "",
+        status: false,
       });
     } catch (e) {
       console.log(e.message);
@@ -102,9 +111,21 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
               <input
                 autoComplete="off"
                 type="date"
+                min={getCurrentDate()}
                 className="bucket-list__input"
                 name="date"
                 value={form.date}
+                onChange={handleInputChange}
+                disabled={form.status === true}
+              />
+            </label>
+            <label className="bucket-list__label bucket-list__label--mod">
+              Already visited
+              <input
+                type="checkbox"
+                className="bucket-list__checkbox"
+                name="status"
+                value={form.status}
                 onChange={handleInputChange}
               />
             </label>
@@ -129,6 +150,8 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
         <BucketListCards
           bucketListData={bucketListData}
           setBucketId={setBucketId}
+          getBucketListData={getBucketListData}
+          url={url}
         />
       </section>
     </>

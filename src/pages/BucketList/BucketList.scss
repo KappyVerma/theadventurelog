@@ -18,6 +18,7 @@
     border-bottom: 1px solid $primary-color-black;
     padding-bottom: 1.5em;
     margin-bottom: 1.5em;
+
     @include tablet {
     }
 
@@ -44,6 +45,12 @@
     font-size: 0.625rem;
     line-height: 1.25rem;
     font-weight: 700;
+
+    &--mod {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1em;
+    }
 
     @include tablet {
       font-size: 0.75rem;
@@ -77,6 +84,10 @@
     &::placeholder {
       color: #999;
     }
+  }
+
+  &__checkbox {
+    margin-left: 5px;
   }
   &__button {
     width: 100%;
