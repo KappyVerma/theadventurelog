@@ -103,7 +103,14 @@
     position: fixed;
     z-index: 1;
     bottom: 20px;
-    left: 50%;
+    left: 45%;
+
+    @include tablet {
+      left: 47%;
+    }
+    @include desktop {
+      left: 50%;
+    }
 
     &:hover {
       background-color: $primary-color-red;

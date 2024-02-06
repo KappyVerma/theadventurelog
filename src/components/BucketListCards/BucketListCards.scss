@@ -19,7 +19,7 @@
     font-size: 0.813rem;
     line-height: 1.13rem;
     font-weight: 700;
-    margin: 0 0 1em -1em;
+    margin: 0 0 1.75em -1em;
     color: $primary-color-white;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 
@@ -27,6 +27,9 @@
       font-size: 0.875rem;
       line-height: 1.4rem;
       margin: auto;
+    }
+    @include desktop {
+      margin-bottom: 0.7em;
     }
   }
   &__modal {
@@ -48,9 +51,16 @@
       }
     }
   }
+
+  &__slider {
+    height: 300px;
+    @include desktop {
+      height: 420px;
+    }
+  }
   &__container {
     width: 180px;
-    height: 40vh;
+    height: 260px;
     margin: auto;
     background-image: url("../../assets/images/bucket-list-card.jpg");
     background-position: center;
@@ -62,6 +72,7 @@
     transition: transform 0.3s ease-in-out;
     padding: 1em;
     position: relative;
+    border-radius: 7px;
 
     &:hover {
       transform: scale(1.05);
@@ -69,12 +80,13 @@
 
     @include tablet {
       width: 200px;
-      height: 45vh;
+      height: 300px;
       margin: 2em auto;
     }
 
     @include desktop {
-      height: 40vh;
+      width: 250px;
+      height: 380px;
     }
   }
 
