@@ -47,8 +47,8 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
     e.preventDefault();
     if (
       !e.target.destination.value ||
-      !e.target.person.value
-      // !e.target.date.value
+      !e.target.person.value ||
+      (!e.target.date.value && !e.target.status.checked)
     ) {
       e.target.destination.style.border = "1px solid #d22d2d";
       e.target.person.style.border = "1px solid #d22d2d";
@@ -100,7 +100,7 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
                 autoComplete="off"
                 type="text"
                 className="bucket-list__input"
-                placeholder="eg. morocco"
+                placeholder="eg. Morocco"
                 name="destination"
                 value={form.destination}
                 onChange={handleInputChange}
@@ -125,7 +125,7 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
                 type="checkbox"
                 className="bucket-list__checkbox"
                 name="status"
-                value={form.status}
+                checked={form.status}
                 onChange={handleInputChange}
               />
             </label>

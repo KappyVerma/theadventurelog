@@ -66,16 +66,23 @@ export default function CreateBucketList({
       destination: bucketData.destination,
       person: bucketData.accompany,
       date: bucketData.duedate,
-      status: bucketData.status,
+      status: bucketData.status === 1,
     });
   }, [bucketData]);
 
   const handleInputChange = (event) => {
     event.target.style.border = "1px solid #034694";
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value,
-    });
+    if (event.target.type === "checkbox") {
+      setForm({
+        ...form,
+        [event.target.name]: event.target.checked,
+      });
+    } else {
+      setForm({
+        ...form,
+        [event.target.name]: event.target.value,
+      });
+    }
   };
 
   const handleEditBucket = (bucketData) => {
@@ -97,12 +104,24 @@ export default function CreateBucketList({
 
   const handleBucketList = async (e) => {
     e.preventDefault();
+
+    if (
+      !e.target.destination.value ||
+      !e.target.person.value ||
+      (!e.target.date.value && !e.target.status.checked)
+    ) {
+      e.target.destination.style.border = "1px solid #d22d2d";
+      e.target.person.style.border = "1px solid #d22d2d";
+      e.target.date.style.border = "1px solid #d22d2d";
+
+      return;
+    }
     try {
       const newData = {
         destination: form.destination,
         accompany: form.person,
         duedate: form.date,
-        status: false,
+        status: form.status,
       };
 
       try {
@@ -120,6 +139,7 @@ export default function CreateBucketList({
         destination: "",
         person: "",
         date: "",
+        status: false,
       });
     } catch (e) {
       console.log(e.message);
@@ -165,11 +185,10 @@ export default function CreateBucketList({
                   autoComplete="off"
                   type="text"
                   className="bucket-list__input"
-                  placeholder="eg. morocco"
+                  placeholder="eg. Morocco"
                   name="destination"
                   value={form.destination}
                   onChange={handleInputChange}
-                  defaultValue={bucketData.destination}
                 />
               </label>
               <label className="bucket-list__label">
@@ -181,7 +200,7 @@ export default function CreateBucketList({
                   name="date"
                   value={form.date}
                   onChange={handleInputChange}
-                  defaultValue={bucketListData.duedate}
+                  disabled={form.status === true}
                 />
               </label>
               <label className="bucket-list__label bucket-list__label--mod">
@@ -190,9 +209,8 @@ export default function CreateBucketList({
                   type="checkbox"
                   className="bucket-list__checkbox"
                   name="status"
-                  value={form.status}
+                  checked={form.status}
                   onChange={handleInputChange}
-                  defaultValue={bucketData.status}
                 />
               </label>
               <label className="bucket-list__label">
@@ -205,7 +223,6 @@ export default function CreateBucketList({
                   name="person"
                   value={form.person}
                   onChange={handleInputChange}
-                  defaultValue={bucketData.accompany}
                 />
               </label>
             </form>
