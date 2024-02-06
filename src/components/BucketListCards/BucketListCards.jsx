@@ -146,7 +146,7 @@ export default function CreateBucketList({
     }
   };
 
-  const sortedBucketList = bucketListData.sort((a, b) => {
+  const sortedBucketList = bucketListData?.sort((a, b) => {
     const dueDateA = new Date(a.duedate);
     const dueDateB = new Date(b.duedate);
 
