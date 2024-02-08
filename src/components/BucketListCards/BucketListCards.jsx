@@ -146,7 +146,7 @@ export default function CreateBucketList({
     }
   };
 
-  const sortedBucketList = bucketListData.sort((a, b) => {
+  const sortedBucketList = bucketListData?.sort((a, b) => {
     const dueDateA = new Date(a.duedate);
     const dueDateB = new Date(b.duedate);
 
@@ -238,7 +238,7 @@ export default function CreateBucketList({
                 className="card__container"
                 style={
                   data.status === 1 || toDueDate(data.duedate) < 0
-                    ? { filter: "grayscale(1)" }
+                    ? { opacity: ".6" }
                     : {}
                 }
               >
