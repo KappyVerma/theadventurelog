@@ -35,17 +35,18 @@ export default function NewVenueCard({
     formData.append("user_id", userId);
     formData.append("bucketlist_id", bucketId);
 
-    if (
-      !event.target.date.value ||
-      !event.target.visitedplaces.value ||
-      !event.target.content.value ||
-      !fileInput
-    ) {
-      event.target.date.style.border = "1px solid #d22d2d";
-      event.target.visitedplaces.style.border = "1px solid #d22d2d";
-      event.target.content.style.border = "1px solid #d22d2d";
+    if (!isEdit) {
+      if (
+        !event.target.date.value ||
+        !event.target.visitedplaces.value ||
+        !event.target.content.value
+      ) {
+        event.target.date.style.border = "1px solid #d22d2d";
+        event.target.visitedplaces.style.border = "1px solid #d22d2d";
+        event.target.content.style.border = "1px solid #d22d2d";
 
-      return;
+        return;
+      }
     }
 
     const editData = {
@@ -76,8 +77,12 @@ export default function NewVenueCard({
     <>
       <section className="newVenue">
         <div className="newVenue__flex">
-          <h2 className="newVenue__title">Add a new Attraction</h2>
-          <IconButton aria-label="close" onClick={handleCloseModal}>
+          <h2 className="newVenue__title">Add a new memory</h2>
+          <IconButton
+            aria-label="close"
+            onClick={handleCloseModal}
+            sx={{ padding: "0" }}
+          >
             <CloseIcon />
           </IconButton>
         </div>
@@ -86,6 +91,7 @@ export default function NewVenueCard({
           className="newVenue__form"
           id="venueForm"
         >
+          <h6 style={{ marginBottom: ".675em" }}>*all fields are required</h6>
           <label className="newVenue__label">
             When
             <input
@@ -96,7 +102,7 @@ export default function NewVenueCard({
             />
           </label>
           <label className="newVenue__label">
-            Attraction Name
+            Memory Title
             <input
               autoComplete="off"
               type="text"

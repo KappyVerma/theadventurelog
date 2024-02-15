@@ -83,11 +83,14 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
     }
   };
 
+  const user = localStorage.getItem("username");
+
   return (
     <>
       <HeaderForHome />
       <section className="bucket-list">
         <div className="bucket-list__container">
+          <h4 style={{ marginBottom: "1em" }}>Welcome: {user}</h4>
           <h1 className="bucket-list__title">Create a new bucket list item</h1>
           <form
             onSubmit={handleBucketList}

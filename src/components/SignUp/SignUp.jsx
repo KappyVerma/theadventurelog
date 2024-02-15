@@ -46,9 +46,7 @@ export default function SignUp({ handleSignupSuccess }) {
     <section className="main-container">
       <div className="sign-up">
         <h1 className="sign-up__title">Create An Account</h1>
-        <h4 className="sign-up__sub-title">
-          Create an account to enjoy all the services for free
-        </h4>
+        <h4 className="sign-up__sub-title">Sign up to enjoy your memories</h4>
 
         <form onSubmit={handleSignup} className="sign-up__form" id="signupForm">
           <input

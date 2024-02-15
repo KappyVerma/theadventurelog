@@ -13,6 +13,9 @@ export default function HeaderForHome() {
       <Link to="/bucketlist" className="navBar__logo"></Link>
 
       <nav className="navBar__list">
+        <Link to={"/bucketlist/maps"} className="navBar__links ">
+          My Map
+        </Link>
         <Link to={"/bucketlist"} className="navBar__links ">
           Bucket List
         </Link>
@@ -20,7 +23,7 @@ export default function HeaderForHome() {
           onClick={handleSignOut}
           className="navBar__links navBar__links--mod"
         >
-          Sign out
+          Sign Out
         </button>
       </nav>
     </header>

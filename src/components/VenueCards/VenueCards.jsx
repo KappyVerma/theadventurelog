@@ -9,6 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { IconButton, Rating } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Venue({ url, bucketId }) {
   const [venue, setVenue] = useState([]);
@@ -16,6 +19,40 @@ export default function Venue({ url, bucketId }) {
   const [editVenue, setEditVenue] = useState(false);
   const [venueData, setVenueData] = useState({});
 
+  let settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   const navigate = useNavigate();
 
   const handleAddVenue = () => {
@@ -55,79 +92,86 @@ export default function Venue({ url, bucketId }) {
     <>
       <section>
         <HeaderForHome />
-        <section className="venue-list">
-          <button className="venue-list__button" onClick={handleAddVenue}>
-            {" "}
-            {/* <span className="venue-list__add-icon"></span> */}
-          </button>
-          <Modal
-            sx={{ backdropFilter: "blur(10px)" }}
-            open={addVenue || editVenue}
-            onClose={closeAddVenue}
-            className="venue-list__modal"
-          >
-            <NewVenueCard
-              url={url}
-              bucketId={bucketId}
-              isEdit={editVenue}
-              handleCloseModal={closeAddVenue}
-              getVenueData={getVenueData}
-              venueData={venueData}
-            />
-          </Modal>
 
-          <ul>
-            {venue.map((v) => (
-              <li key={v.id} className="venue-list__container">
-                <div className="venue-list__block">
-                  <div className="venue-list__flex">
-                    <h3 className="venue-list__title">{v.visitedplaces}</h3>
-                    <div className="venue-list__action">
-                      <IconButton
-                        aria-label="edit"
-                        size="small"
-                        onClick={() => handleEditVenue(v)}
-                        sx={{ fontSize: "1rem" }}
-                      >
-                        <EditIcon
-                          sx={{
-                            fontSize: "18px",
-                          }}
-                        />
-                      </IconButton>
-                      <IconButton
-                        aria-label="delete"
-                        size="small"
-                        onClick={() => handleDeleteVenue(v.id)}
-                        sx={{ fontSize: "1rem" }}
-                      >
-                        <DeleteIcon
-                          sx={{
-                            fontSize: "18px",
-                          }}
-                        />
-                      </IconButton>
+        <section className="box">
+          <div className="box__list">
+            <h1 className="box-header">Add new memories to your bucket list</h1>
+            <button className="venue-list__button" onClick={handleAddVenue}>
+              {" "}
+            </button>
+          </div>
+          <div className="venue-list">
+            <Modal
+              sx={{ backdropFilter: "blur(10px)" }}
+              open={addVenue || editVenue}
+              onClose={closeAddVenue}
+              className="venue-list__modal"
+            >
+              <NewVenueCard
+                url={url}
+                bucketId={bucketId}
+                isEdit={editVenue}
+                handleCloseModal={closeAddVenue}
+                getVenueData={getVenueData}
+                venueData={venueData}
+              />
+            </Modal>
+
+            {/* <ul> */}
+            <Slider {...settings} className="box__slider">
+              {venue.map((v) => (
+                <li key={v.id} className="venue-list__container">
+                  <div className="venue-list__block">
+                    <div className="venue-list__flex">
+                      <h3 className="venue-list__title">{v.visitedplaces}</h3>
+                      <div className="venue-list__action">
+                        <IconButton
+                          aria-label="edit"
+                          size="small"
+                          onClick={() => handleEditVenue(v)}
+                          sx={{ fontSize: "1rem" }}
+                        >
+                          <EditIcon
+                            sx={{
+                              fontSize: "18px",
+                            }}
+                          />
+                        </IconButton>
+                        <IconButton
+                          aria-label="delete"
+                          size="small"
+                          onClick={() => handleDeleteVenue(v.id)}
+                          sx={{ fontSize: "1rem" }}
+                        >
+                          <DeleteIcon
+                            sx={{
+                              fontSize: "18px",
+                            }}
+                          />
+                        </IconButton>
+                      </div>
                     </div>
-                  </div>
-                  <h4 className="venue-list__date">
-                    {v.when} in {v.destination}
-                  </h4>
+                    <h4 className="venue-list__date">
+                      {v.when} in {v.destination}
+                    </h4>
 
-                  <Rating name="read-only" value={v.ratings} readOnly />
-                </div>
-                <div className="venue-list__image-container">
-                  <img
-                    src={`${url}/${v.image_url}`}
-                    alt={v.image_url}
-                    className="venue-list__image"
-                  />
-                </div>
-                <div className="venue-list__block">
-                  <p className="venue-list__block--fonts">{v.content}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+                    <Rating name="read-only" value={v.ratings} readOnly />
+                  </div>
+                  <div className="venue-list__image-container">
+                    <img
+                      src={`${url}/${v.image_url}`}
+                      alt={v.image_url}
+                      className="venue-list__image"
+                    />
+                  </div>
+                  <div className="venue-list__block">
+                    <p className="venue-list__block--fonts">{v.content}</p>
+                  </div>
+                </li>
+              ))}
+            </Slider>
+            {/* </ul> */}
+          </div>
         </section>
       </section>
     </>

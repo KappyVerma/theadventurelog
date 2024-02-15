@@ -146,13 +146,6 @@ export default function CreateBucketList({
     }
   };
 
-  const sortedBucketList = bucketListData?.sort((a, b) => {
-    const dueDateA = new Date(a.duedate);
-    const dueDateB = new Date(b.duedate);
-
-    return dueDateA - dueDateB;
-  });
-
   const toDueDate = (duedate) => {
     let Result = Math.round(
       (new Date(duedate).getTime() - new Date().getTime()) /
@@ -160,6 +153,10 @@ export default function CreateBucketList({
     );
     return Result.toFixed(0);
   };
+
+  const sortedBucketList = bucketListData?.slice().sort((a, b) => {
+    return a.status - b.status;
+  });
 
   return (
     <>
@@ -238,7 +235,7 @@ export default function CreateBucketList({
                 className="card__container"
                 style={
                   data.status === 1 || toDueDate(data.duedate) < 0
-                    ? { filter: "grayscale(1)" }
+                    ? { opacity: ".6" }
                     : {}
                 }
               >
@@ -272,16 +269,17 @@ export default function CreateBucketList({
                     />
                   </IconButton>
                 </div>
-                <p className="card__duedate">
-                  {data.status === 0 && toDueDate(data.duedate) >= 0
-                    ? `${toDueDate(data.duedate)} days to go`
-                    : "Visited"}
-                </p>
                 <Link
                   to={`/bucketlist/venue`}
                   onClick={() => setBucketId(data.id)}
                   className="card__link"
                 >
+                  <p className="card__duedate">
+                    {data.status === 0 && toDueDate(data.duedate) >= 0
+                      ? `${toDueDate(data.duedate)} days to go`
+                      : "Visited"}
+                  </p>
+
                   <div className="card__details">
                     <p className="card__destination">{data.destination}</p>
                     <p className="card__">

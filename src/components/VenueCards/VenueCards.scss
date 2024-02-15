@@ -1,14 +1,15 @@
 @import "../../styles/partials/global";
 .venue-list {
-  padding: 150px 0.7em 1em;
+  padding: 1em 0.7em 1em;
   width: 100%;
   margin: auto;
 
   @include tablet {
-    width: 70%;
+    width: 72%;
   }
   @include desktop {
-    width: 50%;
+    width: 70%;
+    margin: 0;
   }
   &__block {
     padding: 0 0.6em;
@@ -26,6 +27,7 @@
       white-space: wrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      padding-top: 0.5em;
       @include tablet {
         font-size: 0.875rem;
         line-height: 1.4rem;
@@ -52,8 +54,12 @@
     transition: transform 0.3s ease-in-out;
     background-color: $secondary-color-alabaster;
 
-    &:hover {
-      transform: scale(1.04);
+    // &:hover {
+    //   transform: scale(1.04);
+    // }
+
+    @include tablet {
+      width: 60%;
     }
   }
 
@@ -78,38 +84,46 @@
       line-height: 1.25rem;
     }
   }
+
+  &__image-container {
+    width: 100%;
+  }
   &__image {
     width: 100%;
-    pointer-events: none;
+    height: -webkit-fill-available;
+    object-fit: contain;
+    aspect-ratio: 16/9;
+    object-position: center;
+    background-color: $secondary-color-mercury;
   }
 
   &__button {
-    margin-left: auto;
+    margin: auto;
     display: flex;
     align-items: center;
     border: none;
-    height: 37px;
+    height: 50px;
+    width: 50px;
     padding: 1em 1em 1em 0.6em;
-    border-radius: 3px;
+    border-radius: 50px;
     background-color: $primary-color-white;
     color: white;
     font-weight: 500;
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
     background-image: url("../../assets/icons/add.svg");
     background-repeat: no-repeat;
     background-position: center;
-    position: fixed;
+    margin: auto;
+
     z-index: 1;
-    bottom: 20px;
-    left: 45%;
 
     @include tablet {
       left: 47%;
     }
     @include desktop {
-      left: 50%;
+      width: 100px;
+      height: 40px;
+      border-radius: 7px;
+      margin-left: 42%;
     }
 
     &:hover {
@@ -119,5 +133,41 @@
 
   &__add-icon {
     color: blue;
+  }
+}
+
+//FIX THIS LATER
+
+.box {
+  @include tablet {
+    display: flex;
+  }
+  &__list {
+    @include tablet {
+      width: 25%;
+    }
+  }
+}
+
+.box__slider {
+  width: 90%;
+  margin: auto;
+  padding: 65px 1em 1em;
+}
+
+.box-header {
+  width: 100%;
+  padding: 175px 1em 1em;
+  font-size: 0.75rem;
+  color: $primary-color-white;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  text-align: center;
+
+  @include tablet {
+    padding-top: 100px;
+    margin-left: 50px;
+    font-size: 0.875rem;
+    text-align: start;
   }
 }
