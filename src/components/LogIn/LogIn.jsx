@@ -53,7 +53,7 @@ export default function LogIn({
         //callback function from app.js
         updateUserId(response.data.user.id);
 
-        console.log(response.data);
+        // console.log(response.data);
         Navigate("/bucketlist");
       } else {
         console.error(response.data);
