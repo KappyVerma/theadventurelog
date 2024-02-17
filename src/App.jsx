@@ -65,7 +65,7 @@ function App() {
           path="bucketlist/venue"
           element={<VenueCards url={url} bucketId={bucketId} />}
         />
-        <Route path="bucketlist/maps" element={<Maps />} />
+        {/* <Route path="bucketlist/maps" element={<Maps />} /> */}
       </Routes>
     </BrowserRouter>
   );
