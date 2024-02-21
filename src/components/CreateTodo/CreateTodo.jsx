@@ -17,6 +17,7 @@ export default function Todo({ url, bucketId }) {
 
   const newTodo = async (e) => {
     e.preventDefault();
+
     if (!e.target.todo.value) {
       e.target.todo.style.border = "1px solid #d22d2d";
       return;
@@ -31,6 +32,9 @@ export default function Todo({ url, bucketId }) {
     e.target.todo.value = "";
   };
 
+  const handleInputChange = (e) => {
+    e.target.style.border = "";
+  };
   return (
     <>
       <section className="toDo">
@@ -41,6 +45,7 @@ export default function Todo({ url, bucketId }) {
             className="toDo__input"
             name="todo"
             placeholder="What needs to be done?"
+            onChange={handleInputChange}
           />
         </form>
       </section>

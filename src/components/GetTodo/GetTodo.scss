@@ -7,12 +7,11 @@
   }
   &__list {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: $primary-color-white;
     font-size: 0.813rem;
     font-weight: 400;
-    height: 40px;
+    height: auto;
     width: 100%;
     padding: 0.675em;
     margin-bottom: 0.675em;
@@ -36,7 +35,7 @@
       color: #999;
     }
   }
-
-  &__block {
+  &__item {
+    flex-grow: 1;
   }
 }

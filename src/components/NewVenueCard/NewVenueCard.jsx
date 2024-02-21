@@ -142,6 +142,9 @@ export default function NewVenueCard({
               />
             </label>
           )}
+          <h6 style={{ marginBottom: ".675em" }}>
+            Only JPG, PNG and GIF files are allowed{" "}
+          </h6>
         </form>
         <button className="newVenue__button" form="venueForm">
           Submit

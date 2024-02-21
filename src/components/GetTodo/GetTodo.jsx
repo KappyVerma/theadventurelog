@@ -33,29 +33,32 @@ export default function GetTodo({ todoItems, url }) {
     setTodoItemsToRender(todoItems);
   }, [todoItems]);
 
+  const sortedTodoItems = todoItemsToRender.sort((a, b) => {
+    return a.status - b.status;
+  });
+
   return (
     <ul className="todos">
-      {todoItemsToRender?.map((item) => (
+      {sortedTodoItems?.map((item) => (
         <li key={item.id} className="todos__list">
-          <div className="todos__block">
-            <Checkbox
-              className="todos__checkbox"
-              checked={item.status}
-              onChange={(event) => handleChange(event, item.id)}
-              sx={{
-                "& .MuiSvgIcon-root": { fontSize: 18 },
-                padding: "0",
-                marginRight: "3px",
-              }}
-            />
-            <span
-              style={{
-                textDecoration: item.status === 1 ? "line-through" : "none",
-              }}
-            >
-              {item.todoitem}
-            </span>
-          </div>
+          <span
+            className="todos__item"
+            style={{
+              textDecoration: item.status === 1 ? "line-through" : "none",
+            }}
+          >
+            {item.todoitem}
+          </span>
+          <Checkbox
+            className="todos__checkbox"
+            checked={item.status}
+            onChange={(event) => handleChange(event, item.id)}
+            sx={{
+              "& .MuiSvgIcon-root": { fontSize: 18 },
+              padding: "0",
+              marginRight: "3px",
+            }}
+          />
           <IconButton
             aria-label="delete"
             size="small"
