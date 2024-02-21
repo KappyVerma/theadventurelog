@@ -1,25 +1,67 @@
 @import "../../styles/partials/global";
+
+.box {
+  padding-top: 175px;
+
+  @include tablet {
+    display: flex;
+    padding: 100px 48px 0;
+  }
+
+  @include desktop {
+    padding: 100px 64px 0;
+  }
+
+  &__component {
+    @include tablet {
+      width: 40%;
+    }
+  }
+}
+
 .venue-list {
-  padding: 1em 0.7em 1em;
+  padding: 0 1em 1em;
   width: 100%;
-  margin: auto;
 
   @include tablet {
     width: 72%;
+    padding: 0;
+    margin-left: 1em;
   }
+
   @include desktop {
     width: 70%;
-    margin: 0;
   }
+
+  &__box-header {
+    font-size: 0.75rem;
+    color: $primary-color-white;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+    text-align: center;
+
+    &--mod {
+      padding-bottom: 1em;
+    }
+
+    @include tablet {
+      font-size: 0.875rem;
+      text-align: start;
+    }
+  }
+
   &__block {
     padding: 0 0.6em;
     overflow: hidden;
+
     @include tablet {
       padding: 0 1em;
     }
+
     @include desktop {
       padding: 0 1em;
     }
+
     &--fonts {
       font-size: 0.813rem;
       line-height: 1.13rem;
@@ -28,6 +70,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       padding-top: 0.5em;
+
       @include tablet {
         font-size: 0.875rem;
         line-height: 1.4rem;
@@ -48,18 +91,14 @@
 
   &__container {
     padding: 0.5em 0;
-    margin: 1.5em 0 1.5em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 3px;
     transition: transform 0.3s ease-in-out;
     background-color: $secondary-color-alabaster;
-
-    // &:hover {
-    //   transform: scale(1.04);
-    // }
+    margin-bottom: 1em;
 
     @include tablet {
-      width: 60%;
+      width: 100%;
     }
   }
 
@@ -68,11 +107,13 @@
     line-height: 1.13rem;
     font-weight: 700;
     text-transform: capitalize;
+
     @include tablet {
       font-size: 0.91rem;
       line-height: 1.4rem;
     }
   }
+
   &__date {
     font-size: 0.625rem;
     line-height: 1.25rem;
@@ -88,6 +129,7 @@
   &__image-container {
     width: 100%;
   }
+
   &__image {
     width: 100%;
     height: -webkit-fill-available;
@@ -97,33 +139,37 @@
     background-color: $secondary-color-mercury;
   }
 
-  &__button {
-    margin: auto;
+  &__add {
+    padding: 0 0 1em 0;
+    @include tablet {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 0 0.4em;
+    }
+  }
+
+  &__add-button {
     display: flex;
     align-items: center;
     border: none;
-    height: 50px;
-    width: 50px;
-    padding: 1em 1em 1em 0.6em;
+    height: 25px;
+    width: fit-content;
+    justify-content: center;
+    padding: 1em;
     border-radius: 50px;
-    background-color: $primary-color-white;
-    color: white;
+    color: $primary-color-white;
+    background-color: $primary-color-red;
+    font-size: 0.75rem;
     font-weight: 500;
-    background-image: url("../../assets/icons/add.svg");
     background-repeat: no-repeat;
     background-position: center;
-    margin: auto;
-
-    z-index: 1;
+    margin: 0.5em auto;
+    cursor: pointer;
 
     @include tablet {
-      left: 47%;
-    }
-    @include desktop {
-      width: 100px;
-      height: 40px;
-      border-radius: 7px;
-      margin-left: 42%;
+      margin: 0 0 0 auto;
     }
 
     &:hover {
@@ -133,41 +179,5 @@
 
   &__add-icon {
     color: blue;
-  }
-}
-
-//FIX THIS LATER
-
-.box {
-  @include tablet {
-    display: flex;
-  }
-  &__list {
-    @include tablet {
-      width: 25%;
-    }
-  }
-}
-
-.box__slider {
-  width: 90%;
-  margin: auto;
-  padding: 65px 1em 1em;
-}
-
-.box-header {
-  width: 100%;
-  padding: 175px 1em 1em;
-  font-size: 0.75rem;
-  color: $primary-color-white;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  font-weight: 500;
-  text-align: center;
-
-  @include tablet {
-    padding-top: 100px;
-    margin-left: 50px;
-    font-size: 0.875rem;
-    text-align: start;
   }
 }

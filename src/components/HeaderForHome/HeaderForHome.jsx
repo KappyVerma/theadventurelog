@@ -14,7 +14,7 @@ export default function HeaderForHome() {
 
       <nav className="navBar__list">
         <Link to={"/bucketlist/maps"} className="navBar__links ">
-          My Map
+          Map
         </Link>
         <Link to={"/bucketlist"} className="navBar__links ">
           Bucket List

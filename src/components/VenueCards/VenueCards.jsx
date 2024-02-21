@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { IconButton, Rating } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Slider from "react-slick";
+import Todo from "../CreateTodo/CreateTodo";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -19,40 +19,6 @@ export default function Venue({ url, bucketId }) {
   const [editVenue, setEditVenue] = useState(false);
   const [venueData, setVenueData] = useState({});
 
-  let settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 320,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
   const navigate = useNavigate();
 
   const handleAddVenue = () => {
@@ -94,13 +60,22 @@ export default function Venue({ url, bucketId }) {
         <HeaderForHome />
 
         <section className="box">
-          <div className="box__list">
-            <h1 className="box-header">Add new memories to your bucket list</h1>
-            <button className="venue-list__button" onClick={handleAddVenue}>
-              {" "}
-            </button>
+          <div className="box__component">
+            <h1 className="venue-list__box-header venue-list__box-header--mod">
+              Todos
+            </h1>
+            <Todo url={url} bucketId={bucketId} />
           </div>
+
           <div className="venue-list">
+            <div className="venue-list__add">
+              <h1 className="venue-list__box-header">
+                Add new memories to your bucket list
+              </h1>
+              <p className="venue-list__add-button" onClick={handleAddVenue}>
+                Add Memory
+              </p>
+            </div>
             <Modal
               sx={{ backdropFilter: "blur(10px)" }}
               open={addVenue || editVenue}
@@ -117,8 +92,7 @@ export default function Venue({ url, bucketId }) {
               />
             </Modal>
 
-            {/* <ul> */}
-            <Slider {...settings} className="box__slider">
+            <ul>
               {venue.map((v) => (
                 <li key={v.id} className="venue-list__container">
                   <div className="venue-list__block">
@@ -169,8 +143,7 @@ export default function Venue({ url, bucketId }) {
                   </div>
                 </li>
               ))}
-            </Slider>
-            {/* </ul> */}
+            </ul>
           </div>
         </section>
       </section>
