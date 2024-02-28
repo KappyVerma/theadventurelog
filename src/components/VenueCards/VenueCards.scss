@@ -1,0 +1,184 @@
+@import "../../styles/partials/global";
+
+.box {
+  padding-top: 175px;
+
+  @include tablet {
+    display: flex;
+    padding: 100px 48px 0;
+  }
+
+  @include desktop {
+    padding: 100px 64px 0;
+  }
+
+  &__component {
+    @include tablet {
+      width: 40%;
+    }
+  }
+}
+
+.venue-list {
+  padding: 1em 1em 1em;
+  width: 100%;
+  border-top: 1px solid white;
+
+  @include tablet {
+    width: 72%;
+    padding: 0;
+    margin-left: 1em;
+    border-top: 0;
+  }
+
+  @include desktop {
+    width: 70%;
+  }
+
+  &__box-header {
+    font-size: 0.75rem;
+    color: $primary-color-white;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+    text-align: center;
+
+    &--mod {
+      padding-bottom: 1em;
+    }
+
+    @include tablet {
+      font-size: 0.875rem;
+      text-align: start;
+    }
+  }
+
+  &__block {
+    padding: 0 0.6em;
+    overflow: hidden;
+
+    @include tablet {
+      padding: 0 1em;
+    }
+
+    @include desktop {
+      padding: 0 1em;
+    }
+
+    &--fonts {
+      font-size: 0.813rem;
+      line-height: 1.13rem;
+      font-weight: 400;
+      white-space: wrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-top: 0.5em;
+
+      @include tablet {
+        font-size: 0.875rem;
+        line-height: 1.4rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  &__flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__edit {
+    padding: 0;
+  }
+
+  &__container {
+    padding: 0.5em 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    transition: transform 0.3s ease-in-out;
+    background-color: $secondary-color-alabaster;
+    margin-bottom: 1em;
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    font-size: 0.875rem;
+    line-height: 1.13rem;
+    font-weight: 700;
+    text-transform: capitalize;
+
+    @include tablet {
+      font-size: 0.91rem;
+      line-height: 1.4rem;
+    }
+  }
+
+  &__date {
+    font-size: 0.625rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    color: $secondary-color-darkBlack;
+
+    @include tablet {
+      font-size: 0.75rem;
+      line-height: 1.25rem;
+    }
+  }
+
+  &__image-container {
+    width: 100%;
+  }
+
+  &__image {
+    width: 100%;
+    height: -webkit-fill-available;
+    object-fit: contain;
+    aspect-ratio: 16/9;
+    object-position: center;
+    background-color: $secondary-color-mercury;
+  }
+
+  &__add {
+    padding: 0 0 1em 0;
+    @include tablet {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0 0.8em;
+    }
+  }
+
+  &__add-button {
+    display: flex;
+    align-items: center;
+    border: none;
+    height: 25px;
+    width: fit-content;
+    justify-content: center;
+    padding: 1em;
+    border-radius: 50px;
+    color: $primary-color-white;
+    background-color: $primary-color-red;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0.5em auto;
+    cursor: pointer;
+
+    @include tablet {
+      margin: 0 0 0 auto;
+    }
+
+    &:hover {
+      background-color: $primary-color-red;
+    }
+  }
+
+  &__add-icon {
+    color: blue;
+  }
+}
