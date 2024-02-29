@@ -230,7 +230,7 @@ export default function CreateBucketList({
           </div>
         </Modal>
         {!bucketListData.length ? (
-          <p className="card__heading">Store all your memories at one place</p>
+          <div className="card__gif"></div>
         ) : (
           <Slider {...settings} className="card__slider">
             {sortedBucketList?.map((data) => (

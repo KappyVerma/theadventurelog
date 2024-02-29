@@ -70,7 +70,7 @@ export default function Venue({ url, bucketId }) {
                 Add new memories to your bucket list
               </h1>
               <p className="venue-list__add-button" onClick={handleAddVenue}>
-                Add Memory
+                Add
               </p>
             </div>
             <Modal
@@ -140,6 +140,7 @@ export default function Venue({ url, bucketId }) {
                   </div>
                 </li>
               ))}
+              {!venue.length && <div className="venue-list__heading"></div>}
             </ul>
           </div>
         </section>

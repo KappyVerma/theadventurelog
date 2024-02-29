@@ -1,6 +1,15 @@
 @import "../../styles/partials/global";
 
 .todos {
+  max-height: 185px;
+  overflow: scroll;
+
+  @include tablet {
+    max-height: 470px;
+  }
+  @include desktop {
+    max-height: 520px;
+  }
   &__list {
     display: flex;
     align-items: center;
