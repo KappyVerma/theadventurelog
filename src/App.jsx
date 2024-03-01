@@ -39,6 +39,7 @@ function App() {
           path="login"
           element={
             <LogIn
+              url={url}
               updateUserId={updateUserId}
               signupSuccess={signupSuccess}
               closeSignupSuccess={closeSignupSuccess}
@@ -47,7 +48,9 @@ function App() {
         />
         <Route
           path="signup"
-          element={<SignUp handleSignupSuccess={handleSignupSuccess} />}
+          element={
+            <SignUp handleSignupSuccess={handleSignupSuccess} url={url} />
+          }
         />
         <Route
           path="bucketlist"

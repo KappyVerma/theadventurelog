@@ -9,6 +9,7 @@ export default function LogIn({
   updateUserId,
   closeSignupSuccess,
   signupSuccess,
+  url,
 }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -38,7 +39,7 @@ export default function LogIn({
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/login", {
+      const response = await axios.post(`${url}/login`, {
         username,
         password,
       });

@@ -126,10 +126,7 @@ export default function CreateBucketList({
       };
 
       try {
-        await axios.patch(
-          `http://localhost:8080/bucketlist/${bucketData.id}`,
-          newData
-        );
+        await axios.patch(`${url}/bucketlist/${bucketData.id}`, newData);
         getBucketListData();
         closeEditBucket();
       } catch (e) {

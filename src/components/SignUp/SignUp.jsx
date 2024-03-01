@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./SignUp.scss";
 
-export default function SignUp({ handleSignupSuccess }) {
+export default function SignUp({ handleSignupSuccess, url }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -33,7 +33,7 @@ export default function SignUp({ handleSignupSuccess }) {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/user", newUser);
+      const response = await axios.post(`${url}/user`, newUser);
       console.log("Signup Response:", response.data);
       handleSignupSuccess();
       Navigate("/login");
