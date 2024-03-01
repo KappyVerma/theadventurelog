@@ -25,7 +25,7 @@ export default function CreateBucketList({
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1280,
+        breakpoint: 1080,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -33,7 +33,7 @@ export default function CreateBucketList({
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 600,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -42,7 +42,7 @@ export default function CreateBucketList({
         },
       },
       {
-        breakpoint: 320,
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
