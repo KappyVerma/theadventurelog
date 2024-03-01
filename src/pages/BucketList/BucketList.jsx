@@ -66,7 +66,7 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
       };
 
       try {
-        await axios.post("http://localhost:8080/bucketlist", newData);
+        await axios.post(`${url}/bucketlist`, newData);
         getBucketListData();
       } catch (e) {
         console.error(e);
