@@ -5,7 +5,6 @@ import BucketList from "./pages/BucketList/BucketList";
 import LogIn from "./components/LogIn/LogIn";
 import SignUp from "./components/SignUp/SignUp";
 import VenueCards from "./components/VenueCards/VenueCards";
-import Maps from "./components/Maps/Maps";
 import { useState } from "react";
 
 function App() {
