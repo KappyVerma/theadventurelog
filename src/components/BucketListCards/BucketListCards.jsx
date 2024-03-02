@@ -227,7 +227,11 @@ export default function CreateBucketList({
           </div>
         </Modal>
         {!bucketListData.length ? (
-          <div className="card__gif"></div>
+          <div className="card__gif-heading">
+            {" "}
+            "Not all those who wander are lost." - J.R.R.
+            <div className="card__gif"></div>
+          </div>
         ) : (
           <Slider {...settings} className="card__slider">
             {sortedBucketList?.map((data) => (
@@ -275,12 +279,6 @@ export default function CreateBucketList({
                     onClick={() => setBucketId(data.id)}
                     className="card__link"
                   >
-                    <p className="card__duedate">
-                      {data.status === 0 && toDueDate(data.duedate) >= 0
-                        ? `${toDueDate(data.duedate)} days to go`
-                        : "Visited"}
-                    </p>
-
                     <div className="card__details">
                       <p className="card__destination">{data.destination}</p>
                       <p className="card__">
@@ -291,6 +289,12 @@ export default function CreateBucketList({
                       </p>
                       <p className="card__due"> {data.duedate}</p>
                     </div>
+
+                    <p className="card__duedate">
+                      {data.status === 0 && toDueDate(data.duedate) >= 0
+                        ? `${toDueDate(data.duedate)} days to go`
+                        : "Visited"}
+                    </p>
                   </Link>
                 </div>
               </li>

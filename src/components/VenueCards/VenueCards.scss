@@ -38,6 +38,19 @@
   &__heading {
     width: 100%;
     height: 260px;
+    background-image: url("../../assets/images/millo-lin-IbngTBpNuMA-unsplash.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include tablet {
+      height: 50vh;
+    }
+
+    @include desktop {
+      margin-top: 1em;
+      height: 67vh;
+    }
   }
 
   &__box-header {
@@ -148,7 +161,12 @@
 
   &__add {
     padding: 0 0 1em 0;
+    position: sticky;
+    top: 20%;
+    backdrop-filter: blur(0.5rem);
+    z-index: 1;
     @include tablet {
+      top: 13.5%;
       display: flex;
       align-items: center;
       justify-content: space-between;

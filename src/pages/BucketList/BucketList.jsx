@@ -116,7 +116,8 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
                 autoComplete="off"
                 type="date"
                 min={getCurrentDate()}
-                className="bucket-list__input"
+                className="bucket-list__input "
+                placeholder="yyyy-MM-dd"
                 name="date"
                 value={form.date}
                 onChange={handleInputChange}

@@ -96,6 +96,7 @@ export default function NewVenueCard({
             When
             <input
               type="date"
+              placeholder="yyyy-MM-dd"
               className="newVenue__input"
               name="date"
               defaultValue={isEdit ? venueData.when : null}
