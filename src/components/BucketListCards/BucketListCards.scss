@@ -53,6 +53,10 @@
       margin-bottom: 0.7em;
     }
   }
+
+  &__none {
+    display: none;
+  }
   &__modal {
     display: flex;
     align-items: center;
@@ -134,6 +138,7 @@
   }
 
   &__details {
+    height: 24.5vh;
     margin-top: 3em;
     text-transform: capitalize;
     font-size: 0.813rem;
@@ -143,9 +148,13 @@
     color: $primary-color-white;
 
     @include tablet {
+      height: 29vh;
       font-size: 0.875rem;
       font-weight: 700;
       line-height: 1.4rem;
+    }
+    @include desktop {
+      height: 27vh;
     }
   }
 
@@ -162,9 +171,6 @@
 
   &__link {
     text-decoration: none;
-  }
-  &__due {
-    padding-bottom: 6em;
   }
 
   &__duedate {

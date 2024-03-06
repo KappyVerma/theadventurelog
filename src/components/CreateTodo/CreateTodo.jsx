@@ -39,7 +39,7 @@ export default function Todo({ url, bucketId }) {
     <>
       <section className="toDo">
         <h1 className="venue-list__box-header venue-list__box-header--mod">
-          To Do List
+          To-Do List
         </h1>
         <form onSubmit={newTodo} className="toDo__form">
           <input

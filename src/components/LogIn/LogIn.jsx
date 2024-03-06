@@ -106,6 +106,9 @@ export default function LogIn({
         <button className="sign-In__button" form="login" type="submit">
           Sign in
         </button>
+        <p className="sign-up__text">
+          Not a member yet? <Link to="/signUp">Create an Account</Link>
+        </p>
       </div>
     </section>
   );

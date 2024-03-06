@@ -92,14 +92,14 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
       <section className="bucket-list">
         <div className="bucket-list__container">
           <h4 style={{ marginBottom: "1em" }}>Welcome: {user}</h4>
-          <h1 className="bucket-list__title">Create a new bucket list item</h1>
+          <h1 className="bucket-list__title">Create a destination card</h1>
           <form
             onSubmit={handleBucketList}
             className="bucket-list__form"
             id="bucketListForm"
           >
             <label className="bucket-list__label">
-              Where is the destination spot
+              Destination Name
               <input
                 autoComplete="off"
                 type="text"
@@ -111,7 +111,7 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
               />
             </label>
             <label className="bucket-list__label">
-              When do you want to travel
+              Date of Travel
               <input
                 autoComplete="off"
                 type="date"
@@ -135,7 +135,7 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
               />
             </label>
             <label className="bucket-list__label">
-              Who is your travel partner
+              Travel Companion(s)
               <input
                 autoComplete="off"
                 type="text"

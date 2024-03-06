@@ -74,6 +74,9 @@ export default function GetTodo({ todoItems, url }) {
           </IconButton>
         </li>
       ))}
+      {!sortedTodoItems.length && (
+        <p className="todos__dir">**enter/return to submit the todo item**</p>
+      )}
     </ul>
   );
 }

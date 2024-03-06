@@ -67,7 +67,7 @@ export default function Venue({ url, bucketId }) {
           <div className="venue-list">
             <div className="venue-list__add">
               <h1 className="venue-list__box-header">
-                Add new memories to your bucket list
+                Add new memories to your destination card
               </h1>
               <p className="venue-list__add-button" onClick={handleAddVenue}>
                 Add

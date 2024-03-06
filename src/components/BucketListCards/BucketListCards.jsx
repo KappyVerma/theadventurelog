@@ -159,7 +159,9 @@ export default function CreateBucketList({
   return (
     <>
       <section className="card">
-        <h2 className="card__title">Destinations</h2>
+        <h2 className={sortedBucketList.length ? "card__title" : "card__none"}>
+          Destinations
+        </h2>
 
         <Modal
           sx={{ backdropFilter: "blur(10px)" }}
@@ -289,7 +291,6 @@ export default function CreateBucketList({
                       </p>
                       <p className="card__due"> {data.duedate}</p>
                     </div>
-
                     <p className="card__duedate">
                       {data.status === 0 && toDueDate(data.duedate) >= 0
                         ? `${toDueDate(data.duedate)} days to go`

@@ -43,4 +43,10 @@
   &__item {
     flex-grow: 1;
   }
+
+  &__dir {
+    color: $primary-color-white;
+    font-size: 0.813rem;
+    font-weight: 400;
+  }
 }
