@@ -68,6 +68,9 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
       try {
         await axios.post(`${url}/bucketlist`, newData);
         getBucketListData();
+        e.target.destination.style.border = "";
+        e.target.person.style.border = "";
+        e.target.date.style.border = "";
       } catch (e) {
         console.error(e);
       }
