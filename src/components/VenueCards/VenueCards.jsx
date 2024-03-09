@@ -138,7 +138,6 @@ export default function Venue({ url, bucketId }) {
                   </div>
                 </li>
               ))}
-              {!venue.length && <div className="venue-list__heading"></div>}
             </ul>
           </div>
         </section>
