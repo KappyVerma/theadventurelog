@@ -5,16 +5,16 @@ import { useNavigate } from "react-router-dom";
 export default function HeaderForHome() {
   const Navigate = useNavigate();
   const handleSignOut = () => {
-    localStorage.clear();
+    localStorage.removeItem("userId");
     Navigate("/");
   };
   return (
     <header className="navBar">
-      <Link to="/bucketlist" className="navBar__logo"></Link>
+      <Link to="/home" className="navBar__logo" />
 
       <nav className="navBar__list">
-        <Link to={"/bucketlist"} className="navBar__links ">
-          Bucket List
+        <Link to={"/home"} className="navBar__links ">
+          Home
         </Link>
         <button
           onClick={handleSignOut}

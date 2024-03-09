@@ -55,7 +55,7 @@ export default function LogIn({
         updateUserId(response.data.user.id);
 
         // console.log(response.data);
-        Navigate("/bucketlist");
+        Navigate("/home");
       } else {
         console.error(response.data);
       }
@@ -107,7 +107,7 @@ export default function LogIn({
           Sign in
         </button>
         <p className="sign-up__text">
-          Not a member yet? <Link to="/signUp">Create an Account</Link>
+          Not a member yet? <Link to="/signup">Create an Account</Link>
         </p>
       </div>
     </section>

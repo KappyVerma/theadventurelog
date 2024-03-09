@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function HeaderForLogin() {
   return (
     <header className="login-page-navBar">
-      <Link to="/" className="login-page-navBar__logo"></Link>
+      <Link to="/" className="login-page-navBar__logo" />
       <nav className="login-page-navBar__list">
         <Link to="/login" className="login-page-navBar__links">
           Log in

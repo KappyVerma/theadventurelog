@@ -1,16 +1,18 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import Landing from "./pages/Landing/Landing";
-import BucketList from "./pages/BucketList/BucketList";
 import LogIn from "./components/LogIn/LogIn";
 import SignUp from "./components/SignUp/SignUp";
+import BucketList from "./pages/BucketList/BucketList";
 import VenueCards from "./components/VenueCards/VenueCards";
-import { useState } from "react";
 
 function App() {
   const [userId, setUserId] = useState();
   const [bucketId, setBucketId] = useState();
   const [signupSuccess, setSignupSuccess] = useState(false);
+
+  const url = process.env.REACT_APP_API_URL;
 
   const closeSignupSuccess = () => {
     setSignupSuccess(false);
@@ -19,8 +21,6 @@ function App() {
   const handleSignupSuccess = () => {
     setSignupSuccess(true);
   };
-
-  const url = process.env.REACT_APP_API_URL;
 
   const updateUserId = (userId) => {
     setUserId(userId);
@@ -53,7 +53,7 @@ function App() {
           }
         />
         <Route
-          path="bucketlist"
+          path="home"
           element={
             <BucketList
               userId={userId}
@@ -64,7 +64,7 @@ function App() {
           }
         />
         <Route
-          path="bucketlist/venue"
+          path="home/venue"
           element={<VenueCards url={url} bucketId={bucketId} />}
         />
       </Routes>

@@ -12,7 +12,7 @@
   &__input {
     font-size: 0.813rem;
     font-weight: 400;
-    height: 40px;
+    line-height: 1.2rem;
     width: 100%;
     padding: 0.675em 2em 0.675em 0.675em;
     margin-bottom: 0.675em;
@@ -24,7 +24,7 @@
 
     @include tablet {
       font-size: 0.875rem;
-      line-height: 1.4rem;
+      line-height: 1.2rem;
       font-weight: 400;
     }
 

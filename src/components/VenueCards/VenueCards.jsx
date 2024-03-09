@@ -10,8 +10,6 @@ import { IconButton, Rating } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Todo from "../CreateTodo/CreateTodo";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 export default function Venue({ url, bucketId }) {
   const [venue, setVenue] = useState([]);

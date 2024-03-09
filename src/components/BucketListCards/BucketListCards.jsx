@@ -277,7 +277,7 @@ export default function CreateBucketList({
                     </IconButton>
                   </div>
                   <Link
-                    to={`/bucketlist/venue`}
+                    to={`/home/venue`}
                     onClick={() => setBucketId(data.id)}
                     className="card__link"
                   >
