@@ -8,16 +8,19 @@ import "./SignUp.scss";
 export default function SignUp({ handleSignupSuccess, url }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
   const Navigate = useNavigate();
 
   const handleUserChange = (event) => {
     event.target.style.border = "";
     setUsername(event.target.value);
+    setError(null);
   };
   const handlePasswordChange = (event) => {
     event.target.style.border = "";
     setPassword(event.target.value);
+    setError(null);
   };
 
   const handleSignup = async (e) => {
@@ -28,7 +31,19 @@ export default function SignUp({ handleSignupSuccess, url }) {
       password: password,
     };
     if (!newUser.username || !newUser.password) {
-      alert("Please enter a valid user name and password");
+      setError("Username and Password fields cannot be empty");
+      return;
+    } else if (
+      newUser.username.indexOf(" ") > 0 ||
+      newUser.password.indexOf(" ") > 0
+    ) {
+      setError("Username and Password cannot contain spaces");
+      return;
+    } else if (newUser.username.length < 6 || newUser.username.length > 20) {
+      setError("Username must be between 6 and 20 characters long");
+      return;
+    } else if (newUser.password.length < 8 || newUser.password.length > 20) {
+      setError("Password must be between 8 and 20 characters long");
       return;
     }
 
@@ -69,6 +84,7 @@ export default function SignUp({ handleSignupSuccess, url }) {
             onChange={handlePasswordChange}
           />
         </form>
+        {<p className="sign-In__error">{error}</p>}
         <button className="sign-up__button" form="signupForm">
           Create Account
         </button>

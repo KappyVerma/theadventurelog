@@ -16,9 +16,16 @@ export default function NewVenueCard({
   const [ratingValue, setRatingValue] = useState(
     isEdit ? venueData?.ratings : 0
   );
+  const [content, setContent] = useState("");
+  const [error, setError] = useState(null);
 
   const handleFileInputChange = (event) => {
-    setFileInput(event.target.files[0]); // Use files[0] to get the selected file);
+    setFileInput(event.target.files[0]);
+    setError(null);
+  };
+
+  const handleContentChange = (event) => {
+    setContent(event.target.value);
   };
 
   const createVenueCard = async (event) => {
@@ -71,8 +78,12 @@ export default function NewVenueCard({
       getVenueData();
     } catch (err) {
       console.error(err);
+      setError("File not supported");
     }
   };
+
+  const wordCount = content.length;
+
   return (
     <>
       <section className="newVenue">
@@ -110,6 +121,7 @@ export default function NewVenueCard({
               className="newVenue__input"
               name="visitedplaces"
               defaultValue={isEdit ? venueData.visitedplaces : ""}
+              maxLength={30}
             />
           </label>
           <label className="newVenue__label">
@@ -119,8 +131,13 @@ export default function NewVenueCard({
               className="newVenue__input newVenue__input--height"
               name="content"
               defaultValue={isEdit ? venueData.content : ""}
+              value={content}
+              onChange={handleContentChange}
+              maxLength={255}
             />
+            <p className="newVenue__count">{wordCount}/255</p>
           </label>
+
           <label className="newVenue__label newVenue__label--mod">
             {"Rating "}
             <Rating
@@ -141,11 +158,14 @@ export default function NewVenueCard({
                 name="imageFile"
                 onChange={handleFileInputChange}
               />
+              {error && error}
             </label>
           )}
-          <h6 style={{ marginBottom: ".675em" }}>
-            Only JPG, PNG and GIF files are supported{" "}
-          </h6>
+          {!isEdit && (
+            <h6 style={{ marginBottom: ".675em" }}>
+              Only JPG, PNG and GIF files are supported{" "}
+            </h6>
+          )}
         </form>
         <button className="newVenue__button" form="venueForm">
           Submit

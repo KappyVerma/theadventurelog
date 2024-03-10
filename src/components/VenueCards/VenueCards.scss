@@ -1,15 +1,15 @@
 @import "../../styles/partials/global";
 
 .box {
-  padding-top: 175px;
+  padding-top: 140px;
 
   @include tablet {
     display: flex;
-    padding: 100px 48px 0;
+    padding: 90px 48px 0;
   }
 
   @include desktop {
-    padding: 100px 64px 0;
+    padding: 90px 64px 0;
   }
 
   &__component {
@@ -43,7 +43,7 @@
     text-align: center;
 
     &--mod {
-      padding-bottom: 1em;
+      padding: 0.55em 0;
     }
 
     @include tablet {
@@ -153,6 +153,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 0 0.8em;
+      backdrop-filter: none;
     }
   }
 
@@ -175,6 +176,7 @@
     cursor: pointer;
 
     @include tablet {
+      padding: 1.5em 1em;
       margin: 0 0 0 auto;
     }
 
@@ -185,5 +187,31 @@
 
   &__add-icon {
     color: blue;
+  }
+
+  &__heading {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include tablet {
+      height: 50vh;
+    }
+  }
+  &__text {
+    color: $primary-color-white;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    perspective: 1000px;
+    transform: rotateY(30deg);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    @include tablet {
+      font-size: 2rem;
+    }
+    @include desktop {
+      font-size: 2.5rem;
+    }
   }
 }

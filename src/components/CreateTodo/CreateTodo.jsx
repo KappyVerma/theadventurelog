@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import GetTodo from "../GetTodo/GetTodo";
 
-export default function Todo({ url, bucketId }) {
+export default function Todo({ url, bucketId, destinations }) {
   const [todoItems, setTodoItems] = useState([]);
 
   const getTodos = async () => {
@@ -39,7 +39,7 @@ export default function Todo({ url, bucketId }) {
     <>
       <section className="toDo">
         <h1 className="venue-list__box-header venue-list__box-header--mod">
-          To-Do List
+          {destinations.destination} Adventure Checklist
         </h1>
         <form onSubmit={newTodo} className="toDo__form">
           <input
@@ -47,7 +47,7 @@ export default function Todo({ url, bucketId }) {
             type="text"
             className="toDo__input"
             name="todo"
-            placeholder="What needs to be done?"
+            placeholder="Must-Do Activities and Experiences!"
             onChange={handleInputChange}
           />
         </form>

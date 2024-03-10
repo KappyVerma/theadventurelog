@@ -16,6 +16,7 @@ export default function Venue({ url, bucketId }) {
   const [addVenue, setAddVenue] = useState(false);
   const [editVenue, setEditVenue] = useState(false);
   const [venueData, setVenueData] = useState({});
+  const [destinations, setDestinations] = useState([]);
 
   const navigate = useNavigate();
 
@@ -44,11 +45,18 @@ export default function Venue({ url, bucketId }) {
     const response = await axios.get(`${url}/bucketlist/${bucketId}/venue`);
     setVenue(response.data);
   };
+
+  const getSingleBucketListData = async () => {
+    const response = await axios.get(`${url}/bucketlist/${bucketId}`);
+    setDestinations(response.data[0]);
+  };
+
   useEffect(() => {
     if (bucketId) {
       getVenueData();
+      getSingleBucketListData();
     } else {
-      navigate("/bucketlist");
+      navigate("/home");
     }
   }, [bucketId]);
 
@@ -56,19 +64,15 @@ export default function Venue({ url, bucketId }) {
     <>
       <section>
         <HeaderForHome />
-
         <section className="box">
           <div className="box__component">
-            <Todo url={url} bucketId={bucketId} />
+            <Todo url={url} bucketId={bucketId} destinations={destinations} />
           </div>
 
           <div className="venue-list">
             <div className="venue-list__add">
-              <h1 className="venue-list__box-header">
-                Add new memories to your destination card
-              </h1>
               <p className="venue-list__add-button" onClick={handleAddVenue}>
-                Add
+                Add Memories
               </p>
             </div>
             <Modal
@@ -139,6 +143,15 @@ export default function Venue({ url, bucketId }) {
                 </li>
               ))}
             </ul>
+            {!venue.length && (
+              <div className="venue-list__heading">
+                <p className="venue-list__text">
+                  "Enhance your {destinations.destination} card with
+                  unforgettable experiences, creating lasting memories to
+                  cherish forever."
+                </p>
+              </div>
+            )}
           </div>
         </section>
       </section>

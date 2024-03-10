@@ -73,6 +73,11 @@
       border: 1px solid $primary-color-blue;
     }
   }
+
+  &__count {
+    margin-top: -10px;
+    font-size: 0.675rem;
+  }
   &__button {
     width: 100%;
     min-width: 150px;

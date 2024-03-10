@@ -160,7 +160,9 @@ export default function CreateBucketList({
     <>
       <section className="card">
         <h2 className={sortedBucketList.length ? "card__title" : "card__none"}>
-          Destinations
+          {sortedBucketList.length === 1
+            ? "Destination Card"
+            : "Destination Cards"}
         </h2>
 
         <Modal

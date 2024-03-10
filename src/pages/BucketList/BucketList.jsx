@@ -91,10 +91,9 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
 
   return (
     <>
-      <HeaderForHome />
+      <HeaderForHome userId={userId} user={user} />
       <section className="bucket-list">
         <div className="bucket-list__container">
-          <h4 style={{ marginBottom: "1em" }}>Welcome: {user}</h4>
           <h1 className="bucket-list__title">Create a destination card</h1>
           <form
             onSubmit={handleBucketList}
@@ -111,6 +110,7 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
                 name="destination"
                 value={form.destination}
                 onChange={handleInputChange}
+                maxLength={50}
               />
             </label>
             <label className="bucket-list__label">
@@ -147,6 +147,7 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
                 name="person"
                 value={form.person}
                 onChange={handleInputChange}
+                maxLength={30}
               />
             </label>
           </form>
