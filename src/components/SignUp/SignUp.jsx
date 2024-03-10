@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ export default function SignUp({ handleSignupSuccess, url }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [userIndex, setUserIndex] = useState([]);
 
   const Navigate = useNavigate();
 
@@ -23,11 +24,26 @@ export default function SignUp({ handleSignupSuccess, url }) {
     setError(null);
   };
 
+  const checkUserName = async () => {
+    try {
+      const response = await axios.get(`${url}/user`);
+      setUserIndex(response.data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    checkUserName();
+  }, []);
+
   const handleSignup = async (e) => {
     e.preventDefault();
 
+    const trimmedUserName = username.trim();
+
     const newUser = {
-      username: username,
+      username: trimmedUserName,
       password: password,
     };
     if (!newUser.username || !newUser.password) {
@@ -41,6 +57,13 @@ export default function SignUp({ handleSignupSuccess, url }) {
       return;
     } else if (newUser.username.length < 6 || newUser.username.length > 20) {
       setError("Username must be between 6 and 20 characters long");
+      return;
+    } else if (
+      userIndex
+        .map((name) => name.username.toLowerCase())
+        .includes(newUser.username.toLowerCase())
+    ) {
+      setError("Username already taken");
       return;
     } else if (newUser.password.length < 8 || newUser.password.length > 20) {
       setError("Password must be between 8 and 20 characters long");

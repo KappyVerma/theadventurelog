@@ -20,12 +20,18 @@ export default function NewVenueCard({
   const [error, setError] = useState(null);
 
   const handleFileInputChange = (event) => {
+    event.target.style.border = "";
     setFileInput(event.target.files[0]);
     setError(null);
   };
 
   const handleContentChange = (event) => {
     setContent(event.target.value);
+    event.target.style.border = "";
+  };
+
+  const clearValidations = (event) => {
+    event.target.style.border = "";
   };
 
   const createVenueCard = async (event) => {
@@ -43,15 +49,20 @@ export default function NewVenueCard({
     formData.append("bucketlist_id", bucketId);
 
     if (!isEdit) {
-      if (
-        !event.target.date.value ||
-        !event.target.visitedplaces.value ||
-        !event.target.content.value
-      ) {
+      if (!event.target.date.value) {
         event.target.date.style.border = "1px solid #d22d2d";
+        return;
+      }
+      if (!event.target.visitedplaces.value) {
         event.target.visitedplaces.style.border = "1px solid #d22d2d";
+        return;
+      }
+      if (!event.target.content.value) {
         event.target.content.style.border = "1px solid #d22d2d";
-
+        return;
+      }
+      if (!event.target.imageFile.value) {
+        event.target.imageFile.style.border = "1px solid #d22d2d";
         return;
       }
     }
@@ -111,6 +122,7 @@ export default function NewVenueCard({
               className="newVenue__input"
               name="date"
               defaultValue={isEdit ? venueData.when : null}
+              onChange={clearValidations}
             />
           </label>
           <label className="newVenue__label">
@@ -122,6 +134,7 @@ export default function NewVenueCard({
               name="visitedplaces"
               defaultValue={isEdit ? venueData.visitedplaces : ""}
               maxLength={30}
+              onChange={clearValidations}
             />
           </label>
           <label className="newVenue__label">

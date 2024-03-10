@@ -161,8 +161,8 @@ export default function CreateBucketList({
       <section className="card">
         <h2 className={sortedBucketList.length ? "card__title" : "card__none"}>
           {sortedBucketList.length === 1
-            ? "Destination Card"
-            : "Destination Cards"}
+            ? `Destination Card: ${sortedBucketList.length}`
+            : `Destination Cards: ${sortedBucketList.length}`}
         </h2>
 
         <Modal
@@ -188,6 +188,7 @@ export default function CreateBucketList({
                   name="destination"
                   value={form.destination}
                   onChange={handleInputChange}
+                  maxLength={50}
                 />
               </label>
               <label className="bucket-list__label">
@@ -222,6 +223,7 @@ export default function CreateBucketList({
                   name="person"
                   value={form.person}
                   onChange={handleInputChange}
+                  maxLength={30}
                 />
               </label>
             </form>
@@ -232,9 +234,7 @@ export default function CreateBucketList({
         </Modal>
         {!bucketListData.length ? (
           <div className="card__gif-heading">
-            {" "}
-            "Not all those who wander are lost." - J.R.R.
-            <div className="card__gif"></div>
+            <p className="card__text">destination card list is empty</p>
           </div>
         ) : (
           <Slider {...settings} className="card__slider">
