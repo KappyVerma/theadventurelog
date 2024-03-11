@@ -286,15 +286,15 @@ export default function CreateBucketList({
                       {data.accompany}
                     </p>
                     <p className="card__due"> {data.duedate}</p>
-                    <Link
-                      to={`/home/venue`}
-                      onClick={() => setBucketId(data.id)}
-                      className="card__link"
-                    >
-                      {" "}
-                      Explore
-                    </Link>
                   </div>
+                  <Link
+                    to={`/home/venue`}
+                    onClick={() => setBucketId(data.id)}
+                    className="card__link"
+                  >
+                    {" "}
+                    Explore
+                  </Link>
                   <p className="card__duedate">
                     {data.status === 0 && toDueDate(data.duedate) >= 0
                       ? `${toDueDate(data.duedate)} days to go`

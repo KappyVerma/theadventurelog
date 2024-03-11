@@ -14,7 +14,7 @@ export default function HeaderForHome({ user, userId }) {
 
       <nav className="navBar__list">
         {userId ? (
-          <p className="navBar__links navBar__links--user">Welcome: {user}</p>
+          <p className="navBar__links navBar__links--user">Welcome {user}</p>
         ) : (
           <Link to={"/home"} className="navBar__links ">
             Home

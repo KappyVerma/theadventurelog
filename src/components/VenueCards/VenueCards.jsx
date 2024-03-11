@@ -147,8 +147,10 @@ export default function Venue({ url, bucketId }) {
               <div className="venue-list__heading">
                 <p className="venue-list__text">
                   By clicking "add memories" button fill your{" "}
-                  {destinations.destination} card with experiences and memories
-                  to cherish forever.
+                  <span className="venue-list__text--mod">
+                    {destinations.destination}
+                  </span>{" "}
+                  card with experiences and memories to cherish forever.
                 </p>
               </div>
             )}

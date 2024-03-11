@@ -99,7 +99,9 @@ export default function NewVenueCard({
     <>
       <section className="newVenue">
         <div className="newVenue__flex">
-          <h2 className="newVenue__title">Add a new memory</h2>
+          <h2 className="newVenue__title">
+            {isEdit ? "Edit the memory" : "Add a new memory"}
+          </h2>
           <IconButton
             aria-label="close"
             onClick={handleCloseModal}
