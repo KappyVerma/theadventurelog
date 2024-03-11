@@ -16,7 +16,7 @@ export default function Venue({ url, bucketId }) {
   const [addVenue, setAddVenue] = useState(false);
   const [editVenue, setEditVenue] = useState(false);
   const [venueData, setVenueData] = useState({});
-  const [destinations, setDestinations] = useState([]);
+  const [destinations, setDestinations] = useState({});
 
   const navigate = useNavigate();
 
@@ -146,9 +146,9 @@ export default function Venue({ url, bucketId }) {
             {!venue.length && (
               <div className="venue-list__heading">
                 <p className="venue-list__text">
-                  "Enhance your {destinations.destination} card with
-                  unforgettable experiences, creating lasting memories to
-                  cherish forever."
+                  By clicking "add memories" button fill your{" "}
+                  {destinations.destination} card with experiences and memories
+                  to cherish forever.
                 </p>
               </div>
             )}

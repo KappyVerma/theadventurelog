@@ -7,7 +7,7 @@ export default function LoginPage() {
   const Navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("userId") !== null) {
-      Navigate("/home");
+      Navigate("/");
     }
   }, []);
 

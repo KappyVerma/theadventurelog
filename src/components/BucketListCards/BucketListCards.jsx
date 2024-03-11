@@ -33,10 +33,10 @@ export default function CreateBucketList({
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 2,
 
           dots: false,
         },
@@ -278,27 +278,28 @@ export default function CreateBucketList({
                       />
                     </IconButton>
                   </div>
-                  <Link
-                    to={`/home/venue`}
-                    onClick={() => setBucketId(data.id)}
-                    className="card__link"
-                  >
-                    <div className="card__details">
-                      <p className="card__destination">{data.destination}</p>
-                      <p className="card__">
-                        {data.accompany.toLowerCase() === "solo"
-                          ? "  "
-                          : "with"}{" "}
-                        {data.accompany}
-                      </p>
-                      <p className="card__due"> {data.duedate}</p>
-                    </div>
-                    <p className="card__duedate">
-                      {data.status === 0 && toDueDate(data.duedate) >= 0
-                        ? `${toDueDate(data.duedate)} days to go`
-                        : "Visited"}
+
+                  <div className="card__details">
+                    <p className="card__destination">{data.destination}</p>
+                    <p className="card__">
+                      {data.accompany.toLowerCase() === "solo" ? "  " : "with"}{" "}
+                      {data.accompany}
                     </p>
-                  </Link>
+                    <p className="card__due"> {data.duedate}</p>
+                    <Link
+                      to={`/home/venue`}
+                      onClick={() => setBucketId(data.id)}
+                      className="card__link"
+                    >
+                      {" "}
+                      Explore
+                    </Link>
+                  </div>
+                  <p className="card__duedate">
+                    {data.status === 0 && toDueDate(data.duedate) >= 0
+                      ? `${toDueDate(data.duedate)} days to go`
+                      : "Visited"}
+                  </p>
                 </div>
               </li>
             ))}

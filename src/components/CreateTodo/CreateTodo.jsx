@@ -39,7 +39,7 @@ export default function Todo({ url, bucketId, destinations }) {
     <>
       <section className="toDo">
         <h1 className="venue-list__box-header venue-list__box-header--mod">
-          {destinations.destination} Adventure Checklist
+          Adventure Checklist: {destinations.destination}
         </h1>
         <form onSubmit={newTodo} className="toDo__form">
           <input
@@ -47,7 +47,7 @@ export default function Todo({ url, bucketId, destinations }) {
             type="text"
             className="toDo__input"
             name="todo"
-            placeholder="Must-Do Activities and Experiences!"
+            placeholder="Must Do Activities and Experiences!"
             onChange={handleInputChange}
           />
         </form>

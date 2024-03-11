@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import BucketListCards from "../../components/BucketListCards/BucketListCards";
 import HeaderForHome from "../../components/HeaderForHome/HeaderForHome";
 import { getCurrentDate } from "../../utils";
+import { useNavigate } from "react-router-dom";
 
 export default function BucketList({ userId, url, setUserId, setBucketId }) {
   const [form, setForm] = useState({
@@ -14,9 +15,10 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
 
   const [bucketListData, setBucketListData] = useState([]);
 
+  const Navigate = useNavigate();
+  const userIdTest = localStorage.getItem("userId");
   const getBucketListData = async () => {
     try {
-      const userIdTest = localStorage.getItem("userId");
       const response = await axios.get(`${url}/user/${userIdTest}/bucketlist`);
       setBucketListData(response.data);
     } catch (err) {
@@ -24,7 +26,11 @@ export default function BucketList({ userId, url, setUserId, setBucketId }) {
     }
   };
   useEffect(() => {
-    setUserId(localStorage.getItem("userId"));
+    if (userIdTest === null) {
+      Navigate("/login");
+      return;
+    }
+    setUserId(userIdTest);
     getBucketListData();
   }, []);
 

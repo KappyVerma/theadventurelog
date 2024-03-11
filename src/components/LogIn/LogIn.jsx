@@ -70,7 +70,7 @@ export default function LogIn({
       <div className="sign-In">
         <Modal open={signupSuccess} onClose={closeSignupSuccess}>
           <p className="sign-In__success">
-            Signed up successfully, Log in to your account
+            Signed up successfully, Click below to Log in to your account
           </p>
         </Modal>
         <Link to={"/"} className="sign-In__icon"></Link>
