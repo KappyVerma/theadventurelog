@@ -38,12 +38,18 @@ Enter The Adventure Log — our solution to this dilemma. It's a dedicated space
 
 ### Sitemap
 
-- **Sign-in / Sign-up Page**
-  <img width="1438" alt="Screenshot 2024-03-08 at 8 56 14 PM" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/c1f5553e-aa0a-4bbd-8381-09fa6dd6abf8">
+- **Landing Page**
+  - An user can create a new account or log into their exiting account
+<img width="1438" alt="Screenshot 2024-03-08 at 8 56 14 PM" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/a954f535-1824-4e5f-910e-29e40801c870">
+
 - **Home Page**
-- <img width="1440" alt="Screenshot 2024-03-08 at 8 59 38 PM" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/c5a32158-0fc4-43a4-a252-a00008a8f5cd">
+  - An user can create/edit or delete a destination card(s)
+<img width="1440" alt="Screenshot 2024-03-11 at 1 49 31 PM" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/04af6d6d-74a2-447c-93c1-403e485e2c1c">
 
 - **Venue Page**
+  - Inside destination card an user can create a to do list or can post photo(s)
+<img width="1440" alt="Screenshot 2024-03-11 at 1 57 02 PM" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/abc2fecb-2340-4752-a540-a5a015cb9129">
+
 
 ### Data
 
