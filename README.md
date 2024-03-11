@@ -39,7 +39,10 @@ Enter The Adventure Log — our solution to this dilemma. It's a dedicated space
 ### Sitemap
 
 - **Sign-in / Sign-up Page**
+  <img width="1438" alt="Screenshot 2024-03-08 at 8 56 14 PM" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/c1f5553e-aa0a-4bbd-8381-09fa6dd6abf8">
 - **Home Page**
+- <img width="1440" alt="Screenshot 2024-03-08 at 8 59 38 PM" src="https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/c5a32158-0fc4-43a4-a252-a00008a8f5cd">
+
 - **Venue Page**
 
 ### Data
