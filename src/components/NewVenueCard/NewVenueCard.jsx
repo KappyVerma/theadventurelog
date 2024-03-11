@@ -145,8 +145,7 @@ export default function NewVenueCard({
               type="text"
               className="newVenue__input newVenue__input--height"
               name="content"
-              defaultValue={isEdit ? venueData.content : ""}
-              value={content}
+              value={content || (isEdit ? venueData.content : "")}
               onChange={handleContentChange}
               maxLength={255}
             />
