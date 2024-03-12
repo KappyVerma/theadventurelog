@@ -83,14 +83,14 @@ Enter The Adventure Log — our solution to this dilemma. It's a dedicated space
 **Client Repo:**
 
 1. Navigate to a new directory using the terminal.
-2. Clone this repository by typing `git clone https://github.com/KappyVerma/karan-verma-capstone`.
+2. Clone this repository by typing `git clone https://github.com/KappyVerma/theadventurelog.git`.
 3. Install npm dependencies by typing `npm install` in the terminal.
 4. Start the client by typing `npm start` in the terminal.
 
 **Backend Repo:**
 
 1. Navigate to a new directory using the terminal.
-2. Clone the backend repository by typing `git clone https://github.com/KappyVerma/karan-verma-capstone-api`.
+2. Clone the backend repository by typing `git clone https://github.com/KappyVerma/theadventurelog-api.git`.
 3. Install npm dependencies by typing `npm install` in the terminal.
 4. Create a new MySQL database.
 5. Create a new `.env` file in the root directory and populate it with the following information:
