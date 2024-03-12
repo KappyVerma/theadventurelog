@@ -1,4 +1,4 @@
-# The Adventure Log
+# ✈️ The Adventure Log
 
 ## Overview
 
@@ -45,60 +45,93 @@ Enter The Adventure Log — our solution to this dilemma. It's a dedicated space
 ![Home Page](https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/04af6d6d-74a2-447c-93c1-403e485e2c1c)
 
 - **Venue Page**
-  - Inside a destination card, users can create a to-do list or post photos
+  - Inside a destination card, users can create a to-do list and post photos
 ![Venue Page](https://github.com/KappyVerma/karan-verma-capstone/assets/104116426/abc2fecb-2340-4752-a540-a5a015cb9129)
 
-### Data
+### Data Structure
 
-- **Users Table**: id, username, password, timestamp.
 
-- **Destination Table**: id, destination, accompany, due date, status, user_id, timestamp.
+              +------------+          +----------------+          +----------+
+              |   user     |          |   bucketlist   |          |  venue   |
+              +------------+          +----------------+          +----------+
+              | id         |<-------->| id             |<---------| id       |
+              | username   |          | destination    |          | when     |
+              | password   |          | accompany      |          | visited..|
+              | created_at |          | duedate        |          | content  |
+              | updated_at |          | status         |          | image... |
+              +------------+          | user_id (FK)   |          | ratings  |
+                                      | created_at     |          | user_id  |
+                                      | updated_at     |          | bucket.. |
+                                      +----------------+          | created..|
+                                                                  | updated..|
+                                                                  +----------+
+                                                                         |
+                                                                         |
+                                                                         |
+                                                                  +-----------+
+                                                                  | todolist  |
+                                                                  +-----------+
+                                                                  | id        |
+                                                                  | todoitem  |
+                                                                  | status    |
+                                                                  | bucket..  |
+                                                                  | created.. |
+                                                                  | updated.. |
+                                                                  +-----------+
 
-- **Venue Table**: id, user_id, destination_id, text, created_at
 
 ### Endpoints
 
-- **User Authentication**:
+- **User Management**:
 
   - POST /signup
   - POST /login
-
-- **Destination Management**:
-
-  - POST /destinations
-  - GET /destinations
-  - GET /destinations/:id
-  - PUT /destinations/:id
-  - DELETE /destinations/:id
+  - GET /:id/bucketlist
 
 - **Bucket List Management**:
 
   - GET /bucketlist
   - POST /bucketlist
-  - PUT /bucketlist/:id
+  - PATCH /bucketlist/:id
   - DELETE /bucketlist/:id
 
-### How to Run
+- **Venue Management**:
+  
+  - GET /venue
+  - POST /venue
+  - PATCH /venue/:id
+  - DELETE /venue/:id
+    
+- **Todo Management**:
+  
+  - GET /todo
+  - POST /todo
+  - PATCH /todo/:id
+  - DELETE /todo/:id
+    
+## How to Run
 
-**Client Repo:**
+### Client Setup:
 
-1. Navigate to a new directory using the terminal.
-2. Clone this repository by typing `git clone https://github.com/KappyVerma/theadventurelog.git`.
-3. Install npm dependencies by typing `npm install` in the terminal.
-4. Start the client by typing `npm start` in the terminal.
+1. Open your terminal and navigate to a new directory.
+2. Clone the client repository by running: `git clone https://github.com/KappyVerma/theadventurelog.git`.
+3. Install necessary dependencies using: `npm install`.
+4. Start the client application with: `npm start`.
 
-**Backend Repo:**
+### Backend Setup:
 
-1. Navigate to a new directory using the terminal.
-2. Clone the backend repository by typing `git clone https://github.com/KappyVerma/theadventurelog-api.git`.
-3. Install npm dependencies by typing `npm install` in the terminal.
-4. Create a new MySQL database.
-5. Create a new `.env` file in the root directory and populate it with the following information:
+1. Navigate to a new directory using your terminal.
+2. Clone the backend repository by running: `git clone https://github.com/KappyVerma/theadventurelog-api.git`.
+3. Install required dependencies by running: `npm install`.
+4. Create a MySQL database for the backend.
+5. Create a new `.env` file in the root directory and fill it with the following details:
     - `DB_HOST=127.0.0.1`
-    - `DB_USER= your username`
-    - `DB_PASSWORD= your password`
-    - `DB_DATABASE= the name of the database you created`
+    - `DB_USER=your_database_username`
+    - `DB_PASSWORD=your_database_password`
+    - `DB_DATABASE=your_database_name`
 6. Populate the database:
-    - Type `npm migrate` to create tables.
-    - Type `npm seed` to populate tables with seed data.
-7. Type `npm run start` to start the backend server.
+    - Run `npm run migrate` to create necessary tables.
+    - Run `npm run seed` to populate tables with initial data.
+7. Start the backend server by running: `npm run start`.
+
+
